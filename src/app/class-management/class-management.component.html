@@ -1,0 +1,44 @@
+<h1>{{ title }}</h1>
+<div class="container">
+  <form class="form mb-5 col-sm-5">
+    <div class="form-group">
+      <div class="label">libellé classe</div>
+      <input type="text" name="wording" class="form-control col-sm-5" [(ngModel)]="classWording" required>
+    </div>
+    <pre></pre>
+    <div class="form-group">
+      <div class="label">effectif classe</div>
+      <input type="number" name="effectif" class="form-control col-sm-3" [(ngModel)]="classSize">
+    </div>
+    <div class="form-group mt-3">
+      <button  (click)="addClass()" class="btn btn-success">ajouter</button>
+    </div>
+  </form> 
+
+  <div class="table-container col-sm-9">
+    <table class="table table-striped table-responsive">
+      <thead>
+        <tr>
+          <td><strong>id</strong></td>
+          <td><strong>libellé</strong></td>
+          <td><strong>nombre d'éléves</strong></td>
+          <td><strong>modifier</strong></td>
+          <td><strong>supprimer</strong></td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cl of classes">
+          <td>{{ cl.id }}</td>
+          <td>{{ cl.wording }}</td>
+          <td>{{ cl.size }}</td>
+          <td><button type="button" class="btn btn-success">modifier</button></td>
+          <td><button type="button" class="btn btn-danger" (click)="deleteClass(cl.id)">supprimer</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+<router-outlet></router-outlet> 
+
+
