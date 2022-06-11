@@ -1,37 +1,28 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
-import { ClassManagementComponent } from './class-management/class-management.component';
-import { HomeComponent } from './home/home.component';
-import { InscriptionComponent } from './inscription/inscription.component';
-import { StudentsManagementComponent } from './students-management/students-management.component';
+import { Page404Component } from './core/components/page404/page404.component';
+
 
 const routes: Routes = [
+
   {
-    path: 'home',
-    component: HomeComponent,
+    path: "frontoffice",
+    loadChildren: () => import('./frontoffice/frontoffice.module').then(m => m.FrontofficeModule)
   },
   {
-    path: 'class-management',
-    component: ClassManagementComponent,
+    path: "backoffice",
+    loadChildren: () => import('./backoffice/backoffice.module').then(m => m.BackofficeModule)
   },
   {
-    path: 'students-management',
-    component: StudentsManagementComponent,
+    path: "",   
+    redirectTo: "frontoffice",
+    pathMatch: "full"
   },
   {
-    path: 'registration',
-    component: InscriptionComponent,
-  },
-  {
-    path: 'root',
-    component: AppComponent, //page login
-  },
-  {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
+    path: "*",  
+    component: Page404Component
   }
+  
 ];
 
 @NgModule({

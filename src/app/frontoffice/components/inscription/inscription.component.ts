@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Hero } from '../hero';
+
 
 @Component({
   selector: 'app-inscription',
@@ -8,7 +8,7 @@ import { Hero } from '../hero';
 })
 export class InscriptionComponent  {
 
-  powers = ['Really Smart', 'Super Flexible',
+ /* powers = ['Really Smart', 'Super Flexible',
   'Super Hot', 'Weather Changer'];
 
 model = new Hero(18, 'Dr IQ', this.powers[0], 'Chuck Overstreet');
@@ -37,7 +37,7 @@ return myHero;
 showFormControls(form: any) {
 return form && form.controls.name &&
 form.controls.name.value; // Dr. IQ
-}
+}*/
 
   
 }

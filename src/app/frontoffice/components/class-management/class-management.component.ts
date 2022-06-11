@@ -16,6 +16,7 @@ export class ClassManagementComponent implements OnInit {
   classWording = "";
   classSize= 0;
   messageError = "veuillez remplir les champs correctement";
+  date = new Date();
 
  classes = [
    { wording: "Second S", size: 31, id: 1},
