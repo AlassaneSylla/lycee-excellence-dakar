@@ -7,7 +7,7 @@ import { UsersComponent } from './components/users/users.component';
 
 const routes: Routes = [
   {
-    path: "backoffice",
+    path: "",
     component: BackofficeComponent,
     children: [
       

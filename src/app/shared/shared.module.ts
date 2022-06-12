@@ -3,7 +3,10 @@ import { CommonModule } from '@angular/common';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
+import { MaterialModule } from './material.module';
+
+
 
 
 
@@ -15,14 +18,15 @@ import { BrowserModule } from '@angular/platform-browser';
   exports: [
     HeaderComponent,
     FooterComponent,
-    //BrowserModule,
     FormsModule,
+    MaterialModule
   ],
   imports: [
     CommonModule,
-    //BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    RouterModule,
+    MaterialModule
   ]
 })
 export class SharedModule { }
