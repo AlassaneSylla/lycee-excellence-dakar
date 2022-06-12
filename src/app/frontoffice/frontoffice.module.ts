@@ -6,8 +6,9 @@ import { HomeComponent } from './components/home/home.component';
 import { InscriptionComponent } from './components/inscription/inscription.component';
 import { StudentsManagementComponent } from './components/students-management/students-management.component';
 import { FrontofficeComponent } from './frontoffice.component';
-import { FrontOfficeModule } from './frontoffice-routing.module';
+import { FrontOfficeRoutingModule } from './frontoffice-routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -22,8 +23,8 @@ import { SharedModule } from '../shared/shared.module';
   ],
   imports: [
     CommonModule,
-    FrontOfficeModule,
-    SharedModule
+    FrontOfficeRoutingModule,
+    SharedModule,
   ]
 })
 export class FrontofficeModule { }
