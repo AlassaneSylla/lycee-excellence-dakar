@@ -7,6 +7,7 @@ import { InscriptionComponent } from './components/inscription/inscription.compo
 import { StudentsManagementComponent } from './components/students-management/students-management.component';
 import { FrontofficeComponent } from './frontoffice.component';
 import { FrontOfficeModule } from './frontoffice-routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -21,7 +22,8 @@ import { FrontOfficeModule } from './frontoffice-routing.module';
   ],
   imports: [
     CommonModule,
-    FrontOfficeModule
+    FrontOfficeModule,
+    SharedModule
   ]
 })
 export class FrontofficeModule { }
