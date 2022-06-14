@@ -5,7 +5,8 @@ import { MatMenuModule } from "@angular/material/menu";
 import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
-import { NgModule  } from '@angular/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { NgModule } from '@angular/core';
 
 
 const MODULES = [
@@ -16,6 +17,7 @@ const MODULES = [
     MatCardModule,
     MatSidenavModule,
     MatTableModule,
+    MatFormFieldModule,
 ]
 @NgModule({
     imports: MODULES ,

@@ -7,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 title = "Lycée d'Excellence de Dakar";
-title_text = "bienvenu dans notre application de gestion";
+title_text = "Bienvenu dans l'application de gestion";
+logo: string = "assets/images/logo_LED-removebg-preview.png";
 
   constructor() { }
 

@@ -1,6 +1,6 @@
 .row {
     width: 100%;
-    height: 60px;
+    height: 40px;
     align-items: center;
 }
 .container {
@@ -12,10 +12,16 @@
 }
 .item {
     align-self: center;
-   
     text-align: center;
+    justify-content: stretch;
 }
 .router-link-active {
-    background-color: hwb(36 32% 0%);;
+    background-color: hwb(36 32% 0%);
     border-radius: 4px;
+}
+.profilIcon {
+    margin-left: 40px;
+}
+.hrMenu {
+    margin-bottom: 2rem;
 }

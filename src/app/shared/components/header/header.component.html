@@ -1,18 +1,43 @@
 <div class="row">
     <div class="container">
+
         <div class="item">
             <button mat-button routerLink="/frontoffice/home" routerLinkActive="router-link-active">Accueil</button>
         </div>
+    
         <div class="item">
-            <button mat-button routerLink="/frontoffice/class-management" routerLinkActive="router-link-active">Gestion classes</button>
+          <button mat-button routerLink="/frontoffice/class-management" routerLinkActive="router-link-active">Gestion des classes</button>
         </div>
+       
         <div class="item">
-            <button mat-button [matMenuTriggerFor]="belowMenu" routerLink="/frontoffice/students-management" routerLinkActive="router-link-active">Gestion étudiants</button>
-            <mat-menu #belowMenu="matMenu" yPosition="below">
-                <button mat-menu-item>Inscrire étudiant</button>
-                <button mat-menu-item>Lister étudiant</button>
-            </mat-menu>
+          <button mat-button [matMenuTriggerFor]="afterMenu2" routerLinkActive="router-link-active">Gestion des étudiants</button>
+            <mat-menu #afterMenu2="matMenu" xPosition="after">
+              <button mat-menu-item routerLink="/frontoffice/students-management">Lister étudiants</button>
+              <button mat-menu-item routerLink="/frontoffice/add-students-form">Inscrire étudiants</button>
+          </mat-menu>
         </div>
+       
+        <div class="item profilIcon">
+            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                <mat-icon>account_circle</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item>
+                  <mat-icon>person</mat-icon>
+                  <span>Profil</span>
+                </button>
+                <button mat-menu-item>
+                  <mat-icon>logout</mat-icon>
+                  <span>Déconnexion</span>
+                </button>
+                <button mat-menu-item>
+                  <mat-icon>delete</mat-icon>
+                  <span>Supprimer compte</span>
+                </button>
+              </mat-menu>
+        </div>
+
     </div>
 </div> 
+<hr class="hrMenu">
 
