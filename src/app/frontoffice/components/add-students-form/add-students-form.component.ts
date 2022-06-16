@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddStudentsFormComponent implements OnInit {
 
+  formTitle = "Formulaire inscription";
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  submit(login:any){
+    console.log('form submited', login);
   }
 
 }

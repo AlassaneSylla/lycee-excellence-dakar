@@ -9,6 +9,7 @@ import { FrontOfficeRoutingModule } from './frontoffice-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { AddStudentsFormComponent } from './components/add-students-form/add-students-form.component';
+import { UpdateClassComponent } from './components/update-class/update-class.component';
 
 
 
@@ -20,6 +21,7 @@ import { AddStudentsFormComponent } from './components/add-students-form/add-stu
     StudentsManagementComponent,
     FrontofficeComponent,
     AddStudentsFormComponent,
+    UpdateClassComponent,
   ],
   imports: [
     CommonModule,

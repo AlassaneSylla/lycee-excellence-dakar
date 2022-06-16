@@ -1,1 +1,34 @@
-<p>add-students-form works!</p>
+<div class="container">
+    <h2>{{ formTitle }}</h2>
+    <form #login="ngForm" (ngSubmit)="submit(login)"> <!-- methode qui est qppelee losr qu'on click submit -->
+        <div class="form-group">
+            <label for="firstname">Prenom *</label><br>
+            <input #name="ngModel" required minlength="3" maxlength="20" type="text" name="firstname" class="form-control" ngModel><br>
+            <span *ngIf="name.touched && name.invalid" class="alert-danger">prénom invalide !</span>
+        </div>
+        <pre></pre> 
+        <div class="form-group">
+            <label for="lastname">Nom *</label><br>
+            <input #lastname="ngModel" type="text" name="lastname" minlength="2" maxlength="15" required class="form-control" ngModel>
+            <span *ngIf="lastname.touched && lastname.invalid" class="alert-danger">nom invalide !</span>
+        </div>
+        <pre></pre>
+        <div class="form-group">
+            <label for="email">Adresse email</label><br>
+            <input type="email" name="email" class="form-control" ngModel> 
+        </div>
+        <pre></pre>
+        <div class="form-group">
+            <label for="phone">Téléphone *</label><br>
+            <input #phone="ngModel" type="tel" name="phone" class="form-control" minlength="9" maxlength="13" ngModel required><br>
+            <span *ngIf="phone.value == null" class="alert-danger">numéro obligatoire !</span>
+        </div>
+        <pre></pre>
+        <div class="form-group">
+            <label for="address">Adresse</label><br>
+            <input type="text" name="address" class="form-control" ngModel reauired>
+        </div>
+        <pre></pre>
+        <button type="submit" class="btn btn-success">Valider</button>
+    </form>
+</div>

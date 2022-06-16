@@ -5,18 +5,22 @@
       <div class="sec2">
         <div class="form-group col-sm-5">
           <div class="label">libellé classe</div>
-          <input type="text" name="wording" class="form-control" [(ngModel)]="classWording">
+          <input type="text" name="wording" class="form-control" minlength="9" maxlength="20" #wording="ngModel" required [(ngModel)]="classWording"><br>
+          <span *ngIf="wording.touched && wording.invalid" class="alert-danger">libellé invalide !</span>
         </div>
         <pre></pre>
         <div class="form-group col-sm-3">
           <div class="label">effectif classe</div>
-          <input type="number" name="effectif" class="form-control" [(ngModel)]="classSize">
+          <input #size="ngModel" type="number" name="size" class="form-control" minlength="1" maxlength="2" [(ngModel)]="classSize" required><br>
+          <span *ngIf="size.touched || size.invalid || size.value <= 0 || size.value > 50" >effectif invalide</span>
+
         </div>
         <pre></pre>
         <div class="form-group col-sm-3">
           <div class="label">date</div>
-          <input class="form-control" type="date" name="date" [(ngModel)]="date">
-        </div>
+          <input #dateCl="ngModel" class="form-control" type="dateCl" name="date" [(ngModel)]="date" required>
+        </div><br>
+          <span *ngIf="dateCl.value == null" class="alert-danger">mettre une date</span>
       </div>
       <div class="form-group mt-3">
         <button mat-flat-button color="primary" (click)="addClass()">ajouter</button>
