@@ -15,7 +15,7 @@ export class ClassManagementComponent implements OnInit {
   title = "Liste des classes";
   classWording = "";
   classSize= 0;
-  messageError = "veuillez remplir les champs correctement";
+  messageError = "error";
   date = new Date();
 
  classes = [
@@ -35,14 +35,16 @@ export class ClassManagementComponent implements OnInit {
  } 
 
  addClass() {
-   const lastIndex = this.classes.length - 1;  
-   const id = this.classes[lastIndex].id + 1;
-   this.classes.unshift({wording: this.classWording, size: this.classSize, id});
-   this.classWording = "";  
- }
-
- editClass() {
-
+  if (this.classWording == "") {
+   console.log(this.messageError); 
+  }
+  else {
+  const lastIndex = this.classes.length - 1;  
+  const id = this.classes[lastIndex].id + 1;
+  this.classes.unshift({wording: this.classWording, size: this.classSize, id});
+  }
+  this.classWording = ""; 
+   
  }
 
 }

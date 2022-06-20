@@ -5,6 +5,7 @@ import { AddStudentsFormComponent } from './components/add-students-form/add-stu
 import { ClassManagementComponent } from './components/class-management/class-management.component';
 import { HomeComponent } from './components/home/home.component';
 import { StudentsManagementComponent } from './components/students-management/students-management.component';
+import { UpdateClassComponent } from './components/update-class/update-class.component';
 import { FrontofficeComponent } from './frontoffice.component';
 
 
@@ -20,6 +21,10 @@ const routes: Routes = [
       {
         path: 'class-management',
         component: ClassManagementComponent,
+      },
+      {
+        path: "update-class/:id",
+        component: UpdateClassComponent,
       },
       {
         path: 'students-management',

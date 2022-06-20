@@ -1,1 +1,36 @@
-<p>students-management works!</p>
+
+<div class="container mt-3">
+    <h1>{{ title | uppercase }}</h1>
+    <table class="table table-responsive">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Prénom</th>
+          <th scope="col">Nom</th>
+          <th scope="col">Email</th>
+          <th scope="col">Téléphone</th>
+          <th scope="col">Adresse</th>
+          <th scope="col">Date</th>
+          <th class="scope">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of students">
+          <th>{{student.id}}</th>
+          <th>{{student.firstname | titlecase }}</th>
+          <th>{{student.lastname | uppercase }}</th>
+          <th>{{student.addressMail}}</th>
+          <th>{{student.phone}}</th>
+          <th>{{student.location}}</th>
+          <th>{{registrationDate | date}}</th>
+          <th>
+            <a class="linkEdit" routerLink="/frontoffice/update-class/{{student.id}}" >
+              <mat-icon>edit</mat-icon>
+            </a>
+            <button mat-mini-fab color="warn" aria-label="delete icon"(click)="deleteStudent(student.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </th>
+        </tr>
+      </tbody>
+    </table>

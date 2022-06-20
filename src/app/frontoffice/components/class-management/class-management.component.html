@@ -1,7 +1,7 @@
 <div class="container">
-  <form class="form mb-3">
-    <fieldset>
-      <legend>Remplir pour ajouter une classe</legend>
+  <mat-card>
+  <mat-card-title>Remplir pour ajouter une classe</mat-card-title>
+    <form class="form mb-3" (ngSubmit)="addClass()">
       <div class="sec2">
         <div class="form-group col-sm-5">
           <div class="label">libellé classe</div>
@@ -12,26 +12,53 @@
         <div class="form-group col-sm-3">
           <div class="label">effectif classe</div>
           <input #size="ngModel" type="number" name="size" class="form-control" minlength="1" maxlength="2" [(ngModel)]="classSize" required><br>
-          <span *ngIf="size.touched || size.invalid || size.value <= 0 || size.value > 50" >effectif invalide</span>
-
+          <span *ngIf="size.touched || size.invalid || size.value < 0 || size.value > 50" class="alert-danger" >effectif invalide</span><br>
         </div>
         <pre></pre>
-        <div class="form-group col-sm-3">
-          <div class="label">date</div>
-          <input #dateCl="ngModel" class="form-control" type="dateCl" name="date" [(ngModel)]="date" required>
-        </div><br>
-          <span *ngIf="dateCl.value == null" class="alert-danger">mettre une date</span>
       </div>
       <div class="form-group mt-3">
-        <button mat-flat-button color="primary" (click)="addClass()">ajouter</button>
+        <button mat-flat-button color="primary" type="submit">ajouter</button>
       </div>
-    </fieldset>
   </form>
-  <hr class=""> 
+  </mat-card>
+<pre></pre>
+
 
   <!-- class list container -->
-  <div class="table-container">
-    <h1>{{ title | uppercase }}</h1>
+  <div class="table-container mt-3">
+    <h2>{{ title | uppercase }}</h2>
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">libellé</th>
+          <th scope="col">nombre d'éléves</th>
+          <th scope="col">date création</th>
+          <th scope="col">modifier</th>
+          <th scope="col">supprimer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cl of classes">
+          <th>{{cl.id}}</th>
+          <th>{{ cl.wording | uppercase }}</th>
+          <th>{{ cl.size }}</th>
+          <th>{{ date | date }}</th>
+          <th>
+            <a routerLink="/frontoffice/update-class/{{cl.id}}" >
+              <mat-icon>edit</mat-icon>
+            </a>
+          </th>
+          <th>
+            <button mat-mini-fab color="warn" aria-label="delete icon"(click)="deleteClass(cl.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </th>
+        </tr>
+      </tbody>
+    </table>
+    <!-- <mat-card>
+    <mat-card-title>{{ title | uppercase }}</mat-card-title>
     <table class="table table-striped table-responsive">
       <thead>
         <tr>
@@ -51,9 +78,9 @@
           <td>{{ date | date }}</td>
           <td>
             <div>
-              <button mat-mini-fab color="primary" aria-label="edit button">
+              <a routerLink="/frontoffice/update-class/{{cl.id}}" >
                 <mat-icon>edit</mat-icon>
-              </button>
+              </a>
             </div>
           </td>
           <td>
@@ -65,8 +92,8 @@
         </tr>
       </tbody>
     </table>
+    </mat-card> -->
   </div>
-
 </div>
 <router-outlet></router-outlet> 
 

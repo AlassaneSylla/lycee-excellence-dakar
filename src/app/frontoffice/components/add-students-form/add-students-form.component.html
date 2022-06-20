@@ -1,6 +1,6 @@
 <div class="container">
     <h2>{{ formTitle }}</h2>
-    <form #login="ngForm" (ngSubmit)="submit(login)"> <!-- methode qui est qppelee losr qu'on click submit -->
+    <form  > <!-- (ngSubmit)="registration()" -->
         <div class="form-group">
             <label for="firstname">Prenom *</label><br>
             <input #name="ngModel" required minlength="3" maxlength="20" type="text" name="firstname" class="form-control" ngModel><br>
@@ -21,14 +21,24 @@
         <div class="form-group">
             <label for="phone">Téléphone *</label><br>
             <input #phone="ngModel" type="tel" name="phone" class="form-control" minlength="9" maxlength="13" ngModel required><br>
-            <span *ngIf="phone.value == null" class="alert-danger">numéro obligatoire !</span>
+            <span *ngIf="phone.touched && phone.value == null" class="alert-danger">numéro obligatoire !</span>
         </div>
         <pre></pre>
         <div class="form-group">
             <label for="address">Adresse</label><br>
             <input type="text" name="address" class="form-control" ngModel reauired>
         </div>
+        <div class="form-group">
+            <label>Choisir classe</label>
+            <select #cl="ngModel" class="form-control" ngModel matNativeControl required>
+                <option value="volvo">Second</option>
+                <option value="saab">Premiere</option>
+                <option value="mercedes">Terminal</option>
+                <option value="audi">Sixieme</option>
+            </select>
+            <span *ngIf="cl.touched && cl.value== null" class="alert-danger">classe obligatoire</span>
+        </div>
         <pre></pre>
-        <button type="submit" class="btn btn-success">Valider</button>
+        <button mat-flat-button color="primary" type="submit">Valider</button>
     </form>
 </div>
