@@ -1,6 +1,6 @@
 <div class="container">
     <h2>{{ formTitle }}</h2>
-    <form  > <!-- (ngSubmit)="registration()" -->
+    <form> <!-- (ngSubmit)="registration()" -->
         <div class="form-group">
             <label for="firstname">Prenom *</label><br>
             <input #name="ngModel" required minlength="3" maxlength="20" type="text" name="firstname" class="form-control" ngModel><br>
@@ -14,29 +14,31 @@
         </div>
         <pre></pre>
         <div class="form-group">
-            <label for="email">Adresse email</label><br>
-            <input type="email" name="email" class="form-control" ngModel> 
+            <label for="email">Adresse mail</label><br>
+            <input #email="ngModel" required type="email" name="email" class="form-control" ngModel><br>
+            <span *ngIf="email.touched && email.invalid" class="alert-danger">adresse mail invallide !</span>
         </div>
         <pre></pre>
         <div class="form-group">
             <label for="phone">Téléphone *</label><br>
-            <input #phone="ngModel" type="tel" name="phone" class="form-control" minlength="9" maxlength="13" ngModel required><br>
-            <span *ngIf="phone.touched && phone.value == null" class="alert-danger">numéro obligatoire !</span>
+            <input #tel="ngModel" type="tel" name="tel" class="form-control" minlength="9" maxlength="13" ngModel required><br>
+            <span *ngIf="tel.touched && tel.invalid" class="alert-danger">numéro obligatoire !</span>
         </div>
         <pre></pre>
         <div class="form-group">
-            <label for="address">Adresse</label><br>
-            <input type="text" name="address" class="form-control" ngModel reauired>
+            <label for="address">Adresse *</label><br>
+            <input #address="ngModel" required minlength="3" maxlength="50" type="text" name="address" class="form-control" ngModel><br>
+            <span *ngIf="address.touched && address.invalid" class="alert-danger">adresse invalide !</span>
         </div>
         <div class="form-group">
-            <label>Choisir classe</label>
+            <label>Choisir classe *</label>
             <select #cl="ngModel" class="form-control" ngModel matNativeControl required>
                 <option value="volvo">Second</option>
                 <option value="saab">Premiere</option>
                 <option value="mercedes">Terminal</option>
                 <option value="audi">Sixieme</option>
             </select>
-            <span *ngIf="cl.touched && cl.value== null" class="alert-danger">classe obligatoire</span>
+            <span *ngIf="cl.touched && cl.invalid" required class="alert-danger">classe obligatoire</span>
         </div>
         <pre></pre>
         <button mat-flat-button color="primary" type="submit">Valider</button>

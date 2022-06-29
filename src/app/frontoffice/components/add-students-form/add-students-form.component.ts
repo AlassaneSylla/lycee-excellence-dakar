@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { StudentsManagementComponent } from '../students-management/students-management.component';
 
 @Component({
@@ -14,7 +14,8 @@ export class AddStudentsFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  
+  /*listStudents: 
+  @Input()*/
 
  /* registration() {
     var lastIndex = this.students.length - 1;  
