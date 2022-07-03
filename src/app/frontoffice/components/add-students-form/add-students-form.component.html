@@ -15,14 +15,14 @@
         <pre></pre>
         <div class="form-group">
             <label for="email">Adresse mail</label><br>
-            <input #email="ngModel" required type="email" name="email" class="form-control" ngModel><br>
+            <input #email="ngModel" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$" required type="email" minlength="11" maxlength="30" name="email" class="form-control" ngModel><br>
             <span *ngIf="email.touched && email.invalid" class="alert-danger">adresse mail invallide !</span>
         </div>
         <pre></pre>
         <div class="form-group">
             <label for="phone">Téléphone *</label><br>
             <input #tel="ngModel" type="tel" name="tel" class="form-control" minlength="9" maxlength="13" ngModel required><br>
-            <span *ngIf="tel.touched && tel.invalid" class="alert-danger">numéro obligatoire !</span>
+            <span *ngIf="tel.touched && tel.invalid && tel.dirty" class="alert-danger">numéro obligatoire !</span>
         </div>
         <pre></pre>
         <div class="form-group">
