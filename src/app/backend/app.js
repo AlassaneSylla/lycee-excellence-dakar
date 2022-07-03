@@ -1,6 +1,8 @@
 const express = require('express');
 require('dotenv').config();
 const mongoose = require('mongoose');
+const classes = require('./models/classes');
+const Classes = require('./models/classes');
 
 const { NODE_ENV, URL_DB } = process.env;
 
@@ -26,27 +28,37 @@ app.use((req, res, next) => {
 
 
 
-app.get('/api/class', (req, res, next) => {
-    const classes = [
-        {
-         _id: 'oeihfzeoi',
-         libelle: 'Terminale',
-         effectif: 32,
-         userId: 'qsomihvqios',
-        } ,
-        {
-         _id: 'oeihfzeoialou',
-         libelle: 'Seconde',
-         effectif: 33,
-         userId: 'qsomihvqios',
-        },
-     ];
-     res.status(200).json(classes);
+app.get('/api/classes', (req, res, next) => {
+   Classes.find()
+   .then(classes => res.status(200).json(classes))
+   .catch(error => res.status(400).json({ error }));
 });
 
-app.post('/api/class', (req, res, next) => {
-    console.log(req.body);
-    res.status(201).json({ message: 'Objet créé !'});
+app.post('/api/classes', (req, res, next) => {
+    const classe = new Classes({
+        ...req.body
+    });
+    classe.save()
+    .then(() => res.status(201).json({ message: 'Objet créé !' }))
+    .catch(error => res.status(400).json({ error }));
+});
+
+app.get('/api/classes/:id', (req, res, next) => {
+    Classes.findOne({ _id: req.params.id })
+    .then(classes => res.status(200).json(classes))
+    .catch(error => res.status(404).json({ error }));
+})
+
+app.put("/api/classes/:id", (req, res, next) => {
+    Classes.updateOne({ _id: req.params.id }, { ...req.body, _id: req.params.id })
+    .then(() => res.status(200).json({ message: 'Objet modifié !' }))
+    .catch(error => res.status(400).json({ error }));
+});
+
+app.delete('/api/classes/:id', (req, res, next) => {
+    Classes.deleteOne({ _id: req.params.id })
+    .then(() => res.status(200).json({ message: 'Objet supprimé !' }))
+    .catch(error => res.status(400).json({ error }));
 });
 
 
