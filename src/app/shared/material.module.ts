@@ -7,6 +7,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -19,6 +20,7 @@ const MODULES = [
     MatSidenavModule,
     MatTableModule,
     MatFormFieldModule,
+    FormsModule,
 ]
 @NgModule({
     imports: MODULES ,
