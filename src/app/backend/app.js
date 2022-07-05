@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 
 
 const classesRoutes = require('./routes/classes.routes');
+const userRoutes = require('./routes/user.routes');
 
 const { NODE_ENV, URL_DB } = process.env;
 
@@ -29,6 +30,7 @@ app.use((req, res, next) => {
 
 
 app.use('/api/classes', classesRoutes);
+app.use('/api/auth', userRoutes);
 
 
 

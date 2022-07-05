@@ -1,30 +1,25 @@
 <div class="container">
   <mat-card>
-  <mat-card-title>Ajouter une nouvelle classe</mat-card-title>
-    <form class="form mb-3" (ngSubmit)="addClass()">
-      <div class="sec2">
-        <div class="form-group col-sm-5">
-          <div class="label">libellé classe</div>
-          <input type="text" name="wording" class="form-control" minlength="9" maxlength="20" #wording="ngModel" required [(ngModel)]="classWording"><br>
+  <mat-card-title>Ajouter une classe</mat-card-title>
+  <form class="form mb-3" (ngSubmit)="addClass()"> 
+    <div class="sec2">
+      <div class="form-group col-sm-5">
+          <label for="libelle">libellé classe *</label><br>
+          <input #wording="ngModel" minlength="8" maxlength="20" type="text" name="wording" class="form-control" ngModel required [(ngModel)]="classWording"><br>
           <span *ngIf="wording.touched && wording.invalid" class="alert-danger">libellé invalide !</span>
-        </div>
-        <pre></pre>
-        <div class="form-group col-sm-3">
-          <div class="label">effectif classe</div>
-          <input #size="ngModel" type="number" name="size" class="form-control" minlength="1" maxlength="2" [(ngModel)]="classSize" required><br>
-          <span *ngIf="size.touched || size.invalid || size.value < 0 || size.value > 50" class="alert-danger" >effectif invalide</span><br>
-        </div>
-        <pre></pre>
       </div>
-      <div class="form-group mt-3">
-        <button mat-flat-button color="primary" type="submit">Valider</button>
+      <div class="form-group col-sm-3">
+          <label for="effectif">effectif classe *</label><br>
+          <input #size="ngModel" type="number" name="size" min="10" max="40" class="form-control" required [(ngModel)]="classSize">
+          <span *ngIf="size.touched && size.invalid" class="alert-danger">effectif invalide !</span>
       </div>
-  </form>
+    </div>
+    <div class="form-group mt-3">
+      <button mat-flat-button color="primary" type="submit">Valider</button>
+    </div>
+  </form> 
   </mat-card>
-<pre></pre>
-
-
-  <!-- class list container -->
+  
   <div class="table-container mt-3">
     <h2>{{ title | uppercase }}</h2>
     <table>
@@ -43,7 +38,7 @@
           <th>{{cl.id}}</th>
           <th>{{ cl.wording | uppercase }}</th>
           <th>{{ cl.size }}</th>
-          <th>{{ date | date }}</th>
+          <th>{{ date() | date }}</th>
           <th>
             <a routerLink="/frontoffice/update-class/{{cl.id}}" >
               <mat-icon>edit</mat-icon>
@@ -57,42 +52,6 @@
         </tr>
       </tbody>
     </table>
-    <!-- <mat-card>
-    <mat-card-title>{{ title | uppercase }}</mat-card-title>
-    <table class="table table-striped table-responsive">
-      <thead>
-        <tr>
-          <td><strong>id</strong></td>
-          <td><strong>libellé</strong></td>
-          <td><strong>nombre d'éléves</strong></td>
-          <td><strong>date création</strong></td>
-          <td><strong>modifier</strong></td>
-          <td><strong>supprimer</strong></td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let cl of classes">
-          <td>{{ cl.id }}</td>
-          <td>{{ cl.wording | uppercase }}</td>
-          <td>{{ cl.size }}</td>
-          <td>{{ date | date }}</td>
-          <td>
-            <div>
-              <a routerLink="/frontoffice/update-class/{{cl.id}}" >
-                <mat-icon>edit</mat-icon>
-              </a>
-            </div>
-          </td>
-          <td>
-          <div>
-            <button mat-mini-fab color="warn" aria-label="delete icon"(click)="deleteClass(cl.id)">
-              <mat-icon>delete</mat-icon>
-            </button>
-          </div></td>
-        </tr>
-      </tbody>
-    </table>
-    </mat-card> -->
   </div>
 </div>
 <router-outlet></router-outlet> 

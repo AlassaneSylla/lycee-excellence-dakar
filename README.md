@@ -28,3 +28,12 @@ _ Creation schema
 _ Implementation des endpoints
 
 _ Optimisation du backend
+
+_ Authentifications
+    * npm install mongoose-unique-validator : un package de validation pour prevalider les informations
+    * configurer les routes d'authentification dans les controllers user.controller.js
+    * configurer les routes user.routes.js
+    * npm install bcrypt : pour la fonction signup pour hash le password
+    * login pour verifier les donnees du user
+    * creer des tokens d'auth: npm install jsonwebtoken 
+    

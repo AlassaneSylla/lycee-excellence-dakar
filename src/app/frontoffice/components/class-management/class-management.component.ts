@@ -17,7 +17,7 @@ export class ClassManagementComponent implements OnInit {
   classWording = "";
   classSize= 0;
   messageError = "error";
-  date = new Date();
+  date = () =>  Date.now();
 
  classes = [
    { wording: "Second S", size: 31, id: 1},
