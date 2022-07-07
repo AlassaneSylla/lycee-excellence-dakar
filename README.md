@@ -1,15 +1,29 @@
-# lycee-excellence-dakar
+## lycee-excellence-dakar 
 
-Cette application facilite la gestion des classes et des étudiants. D'abord, avant toute manipulation, l'utilisateur doit créer un compte avec prénom, nom et mot de passe. Une fois le compte créé, l'utilisateur a la possibilité de gérer son profil. Il pourra ainsi afficher le profil pour une éventuelle modification de son nom, de son prénom ou de son mot de passe. (in progress)
+    Cette application facilite la gestion des classes et des étudiants. D'abord, avant toute manipulation, l'utilisateur doit créer un compte avec prénom, nom et mot de passe. Une fois le compte créé, l'utilisateur a la possibilité de gérer son profil. Il pourra ainsi afficher le profil pour une éventuelle modification de son nom, de son prénom ou de son mot de passe. (in progress)
 
-Ensuite une fois connecté, l'utilisateur pourra gérer les classes. Il pourra créer une classe, modifier une classe et supprimer une classe. 
+    Ensuite une fois connecté, l'utilisateur pourra gérer les classes. Il pourra créer une classe, modifier une classe et supprimer une classe. 
 
-Enfin au nivequ de la gestion des étudiants, inscrire un étudiant dans une classe et ou afficher la liste des étudiants et a partir de la il pourra modifier ou supprimer les donnees enregistrées.  
+    Enfin au nivequ de la gestion des étudiants, inscrire un étudiant dans une classe et ou afficher la liste des étudiants et a partir de la il pourra modifier ou supprimer les donnees enregistrées.
 
+## Frontend
+# script
+    _ start: ng serve
+# dependencies: v 13.3.0
+    _ @angular/animations
+    _ @angular/cdk
+    _ @angular/common
+    _ @angular/compiler
+    _ @angular/core
+    _ @angular/forms
+    _ @angular/material : MatButtonModule, MatIconModule, MatMenuModule, MatCardModule, MatTableModule, FormsModule
+    _ @angular/platform-browser
+    _ @angular/platform-browser-dynamic
+    _ @angular/router
 
-# partie backend
+## Backend
 
-_ Installation Node
+    _ Installation Node
 
 _ Application express
 

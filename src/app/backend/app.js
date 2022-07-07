@@ -2,12 +2,11 @@ const express = require('express');
 require('dotenv').config();
 const mongoose = require('mongoose');
 
-
 const classesRoutes = require('./routes/classes.routes');
 const userRoutes = require('./routes/user.routes');
+const studentsRoutes = require('./routes/student.routes');
 
 const { NODE_ENV, URL_DB } = process.env;
-
 const app = express();
 app.use(express.json());
 
@@ -17,6 +16,7 @@ mongoose.connect(process.env.URL_DB,
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));
 
+  
 /**
  * CORS: ajout headers
  * acces API depuis n'importe quelle origne
@@ -31,10 +31,7 @@ app.use((req, res, next) => {
 
 app.use('/api/classes', classesRoutes);
 app.use('/api/auth', userRoutes);
-
-
-
-
+app.use('/api/students', studentsRoutes);
 
 
 module.exports = app;
