@@ -16,10 +16,10 @@ mongoose.connect(process.env.URL_DB,
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));
 
-  
+
 /**
- * CORS: ajout headers
- * acces API depuis n'importe quelle origne
+ * CORS: add headers
+ * api access from any origin
  */
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');

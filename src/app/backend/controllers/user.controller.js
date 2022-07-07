@@ -1,5 +1,6 @@
 const Users = require("../models/Users");
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 
 /**
  * "saler" le mot de passe 10 fois.
@@ -43,4 +44,28 @@ exports.login = (req, res, next) => {
         .catch(error => res.status(500).json({ error }));
     })
     .catch(error => res.status(500).json({ error }));
+};
+
+exports.getAllUsers = (req, res, next) => {
+    Users.find()
+    .then(user => res.status(200).json(user))
+    .catch(error => res.status(400).json({ error }));
+};
+
+exports.getUser = (req, res, next) => {
+    Users.findOne({ _id: req.params.id })
+    .then(user => res.status(200).json(user))
+    .catch(error => res.status(404).json({ error }));
+};
+
+exports.editUser = (req, res, next) => {
+    Users.updateOne({ _id: req.params.id }, { ...req.body, _id: req.params.id })
+    .then(() => res.status(200).json({ message: 'Donnée(s) user modifiée(s) !' }))
+    .catch(error => res.status(400).json({ error }));
+};
+
+exports.deleteUser = (req, res, next) => {
+    Users.deleteOne({ _id: req.params.id })
+    .then(() => res.status(200).json({ message: 'Utilisateur supprime !' }))
+    .catch(error => res.status(400).json({ error }));
 };
