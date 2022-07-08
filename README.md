@@ -1,14 +1,13 @@
-## lycee-excellence-dakar 
+# lycee-excellence-dakar 
     Cette application facilite la gestion des classes et des étudiants. D'abord, avant toute manipulation, l'utilisateur doit créer un compte avec prénom, nom et mot       de passe. Une fois le compte créé, l'utilisateur a la possibilité de gérer son profil. Il pourra ainsi afficher le profil pour une éventuelle modification de son       nom, de son prénom ou de son mot de passe. (in progress)
+Ensuite une fois connecté, l'utilisateur pourra gérer les classes. Ainsi, il a le droit de créer, modifier ou supprimer une classe. 
+Enfin au niveau de la gestion des étudiants, inscrire un étudiant dans une classe et ou afficher la liste des étudiants et à partir de là il pourra modifier ou         supprimer les données enregistrées.
 
-    Ensuite une fois connecté, l'utilisateur pourra gérer les classes. Il pourra créer une classe, modifier une classe et supprimer une classe. 
 
-    Enfin au nivequ de la gestion des étudiants, inscrire un étudiant dans une classe et ou afficher la liste des étudiants et a partir de la il pourra modifier ou         supprimer les donnees enregistrées.
-
-## Frontend
-# script
+# Frontend
+## script
     _ start: ng serve
-# dependencies: v 13.3.0
+## dependencies: v 13.3.0
     _ @angular/animations
     _ @angular/cdk
     _ @angular/common
@@ -20,7 +19,7 @@
     _ @angular/platform-browser-dynamic
     _ @angular/router
 
-## Backend
+# Backend
     _ Installation Node
     _ Application express
     _ La fonction normalizePort de server.js renvoie un port valide
