@@ -1,7 +1,9 @@
 # lycee-excellence-dakar 
     Cette application facilite la gestion des classes et des étudiants. D'abord, avant toute manipulation, l'utilisateur doit créer un compte avec prénom, nom et mot       de passe. Une fois le compte créé, l'utilisateur a la possibilité de gérer son profil. Il pourra ainsi afficher le profil pour une éventuelle modification de son       nom, de son prénom ou de son mot de passe. (in progress)
-Ensuite une fois connecté, l'utilisateur pourra gérer les classes. Ainsi, il a le droit de créer, modifier ou supprimer une classe. 
-Enfin au niveau de la gestion des étudiants, inscrire un étudiant dans une classe et ou afficher la liste des étudiants et à partir de là il pourra modifier ou         supprimer les données enregistrées.
+    
+    Ensuite une fois connecté, l'utilisateur pourra gérer les classes. Ainsi, il a le droit de créer, modifier ou supprimer une classe.
+    
+    Enfin au niveau de la gestion des étudiants, inscrire un étudiant dans une classe et ou afficher la liste des étudiants et à partir de là il pourra modifier ou         supprimer les données enregistrées.
 
 
 # Frontend
