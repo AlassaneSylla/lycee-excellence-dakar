@@ -19,6 +19,7 @@ import { MaterialModule } from './material.module';
     HeaderComponent,
     FooterComponent,
     FormsModule,
+    ReactiveFormsModule,
     MaterialModule
   ],
   imports: [

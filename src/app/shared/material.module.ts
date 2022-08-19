@@ -8,7 +8,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
+import { MatInputModule } from '@angular/material/input';
 
 
 const MODULES = [
@@ -21,6 +21,7 @@ const MODULES = [
     MatTableModule,
     MatFormFieldModule,
     FormsModule,
+    MatInputModule,
 ]
 @NgModule({
     imports: MODULES ,

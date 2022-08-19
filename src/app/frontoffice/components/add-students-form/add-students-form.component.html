@@ -1,28 +1,23 @@
 <div class="container">
     <h2>{{ formTitle }}</h2>
     <form> <!-- (ngSubmit)="registration()" -->
-        <div class="form-group">
-            <label for="firstname">Prenom *</label><br>
-            <input #name="ngModel" required minlength="3" maxlength="20" type="text" name="firstname" class="form-control" ngModel><br>
-            <span *ngIf="name.touched && name.invalid" class="alert-danger">prénom invalide !</span>
+        <div class="form-group secPreNom">
+            <div class="col-sm-5">
+                <label for="firstname">Prenom *</label><br>
+                <input #name="ngModel" required minlength="3" maxlength="20" type="text" name="firstname" class="form-control" ngModel><br>
+                <span *ngIf="name.touched && name.invalid" class="alert-danger">prénom invalide !</span>
+            </div>
+            <div class="col-sm-5">
+                <label for="lastname">Nom *</label><br>
+                <input #lastname="ngModel" type="text" name="lastname" minlength="2" maxlength="15" required class="form-control" ngModel>
+                <span *ngIf="lastname.touched && lastname.invalid" class="alert-danger">nom invalide !</span>
+            </div>
         </div>
         <pre></pre> 
         <div class="form-group">
-            <label for="lastname">Nom *</label><br>
-            <input #lastname="ngModel" type="text" name="lastname" minlength="2" maxlength="15" required class="form-control" ngModel>
-            <span *ngIf="lastname.touched && lastname.invalid" class="alert-danger">nom invalide !</span>
-        </div>
-        <pre></pre>
-        <div class="form-group">
-            <label for="email">Adresse mail</label><br>
-            <input #email="ngModel" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$" required type="email" minlength="11" maxlength="30" name="email" class="form-control" ngModel><br>
-            <span *ngIf="email.touched && email.invalid" class="alert-danger">adresse mail invallide !</span>
-        </div>
-        <pre></pre>
-        <div class="form-group">
             <label for="phone">Téléphone *</label><br>
             <input #tel="ngModel" type="tel" name="tel" class="form-control" minlength="9" maxlength="13" ngModel required><br>
-            <span *ngIf="tel.touched && tel.invalid && tel.dirty" class="alert-danger">numéro obligatoire !</span>
+            <span *ngIf="tel.touched && tel.invalid" class="alert-danger">numéro obligatoire !</span>
         </div>
         <pre></pre>
         <div class="form-group">
@@ -30,13 +25,14 @@
             <input #address="ngModel" required minlength="3" maxlength="50" type="text" name="address" class="form-control" ngModel><br>
             <span *ngIf="address.touched && address.invalid" class="alert-danger">adresse invalide !</span>
         </div>
+        <pre></pre>
         <div class="form-group">
             <label>Choisir classe *</label>
             <select #cl="ngModel" class="form-control" ngModel matNativeControl required>
-                <option value="volvo">Second</option>
-                <option value="saab">Premiere</option>
-                <option value="mercedes">Terminal</option>
-                <option value="audi">Sixieme</option>
+                <option value="second">Second</option>
+                <option value="premiere">Premiere</option>
+                <option value="terminale">Terminal</option>
+                <option value="sixieme">Sixieme</option>
             </select>
             <span *ngIf="cl.touched && cl.invalid" required class="alert-danger">classe obligatoire</span>
         </div>

@@ -1,19 +1,19 @@
 <div class="row">
-    <div class="container">
+    <div class="container pt-2">
 
         <div class="item">
             <button mat-button routerLink="/frontoffice/home" routerLinkActive="router-link-active">Accueil</button>
         </div>
     
         <div class="item">
-          <button mat-button routerLink="/frontoffice/class-management" routerLinkActive="router-link-active">Gestion des classes</button>
+          <button mat-button routerLink="/frontoffice/class-management" routerLinkActive="router-link-active">Gestion classes</button>
         </div>
        
         <div class="item">
-          <button mat-button [matMenuTriggerFor]="afterMenu2" routerLinkActive="router-link-active">Gestion des étudiants</button>
+          <button mat-button [matMenuTriggerFor]="afterMenu2" routerLinkActive="router-link-active">Gestion étudiants</button>
             <mat-menu #afterMenu2="matMenu" xPosition="after">
               <button mat-menu-item routerLink="/frontoffice/students-management">Lister étudiants</button>
-              <button mat-menu-item routerLink="/frontoffice/add-students-form">Inscrire étudiants</button>
+              <button mat-menu-item routerLink="/frontoffice/add-students-form">Inscrire étudiant</button>
           </mat-menu>
         </div>
        
