@@ -5,7 +5,7 @@
           <div class="col-12 item">
             <mat-form-field class="example-full-width lib" appearance="fill">
               <mat-label>Libellé classe</mat-label>
-              <input type="text" minlength="8" maxlength="20" matInput [formControl]="libFormControl" placeholder="Ex. Seconde S A ">
+              <input type="text" minlength="8" maxlength="20" matInput [formControl]="libFormControl" placeholder="Ex. Seconde S A " formControlName="classWording">
               <mat-error *ngIf="libFormControl.hasError('required')">
                 Saisir <strong>le libellé</strong>
               </mat-error>
@@ -15,7 +15,7 @@
           <div class="col-12 item">
             <mat-form-field class="example-full-width eff" appearance="fill">
               <mat-label>Effectif classe</mat-label>
-              <input type="number" matInput [formControl]="effFormControl" >
+              <input type="number" matInput [formControl]="effFormControl" formControlName="classSize">
               <mat-error *ngIf="effFormControl.hasError('required')">
                 Renseignez <strong>l'effectif </strong> de la classe
               </mat-error>

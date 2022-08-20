@@ -29,9 +29,9 @@ app.use((req, res, next) => {
 });
 
 
-app.use('/api/classes', classesRoutes);
-app.use('/api/auth', userRoutes);
-app.use('/api/students', studentsRoutes);
+app.use('http://localhost:3000/api/classes', classesRoutes);
+app.use('http://localhost:3000/api/auth', userRoutes);
+app.use('http://localhost:3000/api/students', studentsRoutes);
 
 
 module.exports = app;

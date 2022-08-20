@@ -1,6 +1,98 @@
-<div class="container">
-    <h2>{{ formTitle }}</h2>
-    <form> <!-- (ngSubmit)="registration()" -->
+<div class="row form-container mb-5">
+    <h4>{{ formTitle }}</h4>
+    <form class="example-form">
+        <table class="example-full-width" cellspacing="0">
+            <tr>
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Prénom(s)</mat-label>
+                        <input matInput type="text" required>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Nom</mat-label>
+                        <input matInput type="text" required>
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Date de naissance</mat-label>
+                        <input matInput type="date" required>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Lieu de naissance</mat-label>
+                        <input matInput type="text" placeholder="Dakar, Senegal" required>
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Téléphone</mat-label>
+                        <span matPrefix>+221 &nbsp;</span>
+                        <input type="tel" matInput placeholder="7X-XXX-XX-XX" required>
+                        <mat-icon matSuffix>mode_edit</mat-icon>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Adresse mail</mat-label>
+                        <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+                               placeholder="Ex. pat@example.com">
+                        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                          Entrez un mail valide
+                        </mat-error>
+                        <mat-error *ngIf="emailFormControl.hasError('required')">
+                          adresse mail <strong>obligatoire</strong>
+                        </mat-error>
+                      </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Adresse</mat-label>
+                        <textarea matInput type="text" required></textarea>
+                    </mat-form-field>             
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Choisir classe</mat-label>
+                        <mat-select [(ngModel)]="selectedValue" name="food" required>
+                          <mat-option *ngFor="let food of foods" [value]="food.value">
+                            {{food.viewValue}}
+                          </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Date d'inscription</mat-label>
+                        <input matInput type="date" required>
+                    </mat-form-field>
+                </td>  
+            </tr>
+            <tr>
+                <td>
+                    <p class="text">Eleve inscrit(e) en classe de: <strong> {{selectedValue}} </strong> </p>
+                </td>
+                <td>
+                    <div class="btn-container">
+                        <button mat-flat-button color="primary" type="submit">Valider inscription</button>
+                    </div>  
+                </td>   
+            </tr>
+        </table>
+      </form>
+      
+
+    <!-- (ngSubmit)="registration()" -->
+    <!-- <form> 
         <div class="form-group secPreNom">
             <div class="col-sm-5">
                 <label for="firstname">Prenom *</label><br>
@@ -38,5 +130,5 @@
         </div>
         <pre></pre>
         <button mat-flat-button color="primary" type="submit">Valider</button>
-    </form>
+    </form> -->
 </div>

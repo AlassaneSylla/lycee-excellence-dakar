@@ -9,6 +9,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSelectModule } from '@angular/material/select';
 
 
 const MODULES = [
@@ -22,6 +24,8 @@ const MODULES = [
     MatFormFieldModule,
     FormsModule,
     MatInputModule,
+    MatPaginatorModule,
+    MatSelectModule
 ]
 @NgModule({
     imports: MODULES ,

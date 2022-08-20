@@ -27,15 +27,14 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./class-management.component.scss']
 })
 export class ClassManagementComponent implements OnInit {
-  libFormControl = new FormControl('', [Validators.required]);
-  effFormControl = new FormControl('', [Validators.required]);
- 
-  
-  form = new FormGroup({
-    wording : new FormControl(''),
-    date : new FormControl(''),
-    size : new FormControl('')
-  });
+    libFormControl = new FormControl('', [Validators.required]);
+    effFormControl = new FormControl('', [Validators.required]);
+
+    form = new FormGroup({
+      classWording : new FormControl(''),
+      classSize : new FormControl('')
+    });
+    
 
   constructor(private classeService: ClasseService) { }
 
