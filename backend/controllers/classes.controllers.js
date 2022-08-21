@@ -14,10 +14,9 @@ exports.getOneClass = (req, res, next) => {
 };
 
 exports.createClass = (req, res, next) => {
-    const classe = new Classes({
-        ...req.body
-    });
-    classe.save()
+    console.log('testclass');
+    const classe = { ...req.body };
+    Classes.create(classe)
     .then(() => res.status(201).json({ message: 'Objet créé !' }))
     .catch(error => res.status(400).json({ error }));
 };

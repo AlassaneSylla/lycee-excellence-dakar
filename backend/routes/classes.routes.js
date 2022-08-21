@@ -5,10 +5,10 @@ const classesControllers = require('../controllers/classes.controllers');
 
 const auth = require('../middleware/auth');
 
-router.get('/', auth, classesControllers.getAllClasses); 
-router.post('/', auth, classesControllers.createClass);
-router.get('/:id', auth, classesControllers.getOneClass);
-router.put("/:id", auth, classesControllers.modifyClass);
-router.delete('/:id', auth, classesControllers.deleteClass);
+router.get('/', classesControllers.getAllClasses); 
+router.post('/',  classesControllers.createClass);
+router.get('/:id',  classesControllers.getOneClass);
+router.put("/:id", classesControllers.modifyClass);
+router.delete('/:id', classesControllers.deleteClass);
 
 module.exports = router;

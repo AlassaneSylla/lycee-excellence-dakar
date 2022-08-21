@@ -2,22 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ClasseService } from 'src/app/shared/servicies/classe.service';
 import {FormControl, Validators} from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 export interface PeriodicElement {
   wording: string;
   position: number;
   size: number;
-  date: number
+  date: string
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, wording: 'Sixieme A', size: 36, date: 6},
-  {position: 2, wording: 'Cinquieme C', size: 40, date: 2},
-  {position: 3, wording: 'Quatrieme B', size: 29, date: 5},
-  {position: 4, wording: 'Troisieme E', size: 31, date: 6},
-  {position: 5, wording: 'Seconde L', size: 25, date: 5},
-  {position: 6, wording: 'Premiere S', size: 23, date: 3},
-  {position: 7, wording: 'Terminale S1 A', size: 22, date: 5},
+  {position: 1, wording: 'Sixieme A', size: 36, date: 'dateins'},
+  {position: 2, wording: 'Cinquieme C', size: 40, date: '...'},
+  {position: 3, wording: 'Quatrieme B', size: 29, date: '...'},
+  {position: 4, wording: 'Troisieme E', size: 31, date: '...'},
+  {position: 5, wording: 'Seconde L', size: 25, date: '..'},
+  {position: 6, wording: 'Premiere S', size: 23, date: '...'},
+  {position: 7, wording: 'Terminale S1 A', size: 22, date: '...'},
   
 ];
 
@@ -31,8 +32,8 @@ export class ClassManagementComponent implements OnInit {
     effFormControl = new FormControl('', [Validators.required]);
 
     form = new FormGroup({
-      classWording : new FormControl(''),
-      classSize : new FormControl('')
+      wording : new FormControl(''),
+      size : new FormControl('')
     });
     
 
@@ -42,11 +43,12 @@ export class ClassManagementComponent implements OnInit {
   }
 
   title = "Liste des classes";
-  classWording = "";
-  classSize= 0;
-  messageError = "error";
+  titleForm = 'Ajouter nouvelle classe';
   date = () =>  Date.now();
 
+  classWording = "";
+  classSize= 0;
+ 
  classes = [
    { wording: "Second S", size: 31, id: 1},
    { wording: "Premiere S1", size: 22, id: 5},
@@ -65,12 +67,14 @@ export class ClassManagementComponent implements OnInit {
 
  addClass() {
   let data = this.form.value;
+  console.log(data);
   let classe = { 
     size: data.size, 
     wording: data.wording, 
     date : Date.now()
   }
   this.classeService.createClass(classe);
+  data.wording = "";
   
   /* if (this.classWording == "") {
    console.log(this.messageError); 

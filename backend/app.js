@@ -1,6 +1,8 @@
 const express = require('express');
 require('dotenv').config();
 const mongoose = require('mongoose');
+const bodyparser = require('body-parser');
+const cors = require('cors');
 
 const classesRoutes = require('./routes/classes.routes');
 const userRoutes = require('./routes/user.routes');
@@ -21,17 +23,18 @@ mongoose.connect(process.env.URL_DB,
  * CORS: add headers
  * api access from any origin
  */
-app.use((req, res, next) => {
+/*app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Acces-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATH, OPTIONS');
     next();
-});
+});*/
 
-
-app.use('http://localhost:3000/api/classes', classesRoutes);
-app.use('http://localhost:3000/api/auth', userRoutes);
-app.use('http://localhost:3000/api/students', studentsRoutes);
+app.use(cors());
+app.use(bodyparser.json());
+app.use('/api/classes', classesRoutes);
+//app.use('/api/auth', userRoutes);
+app.use('/api/students', studentsRoutes);
 
 
 module.exports = app;

@@ -11,7 +11,7 @@ export class ClasseService {
     private httpClient: HttpClient ) { }
 
     createClass(classe: IClasse): any {
-      return this.httpClient.post('http://localhost:3000/', classe).subscribe((result) => {
+      return this.httpClient.post('http://localhost:3000/api/classes', classe).subscribe((result) => {
         console.log(result);
         if(result.hasOwnProperty('message')){}
       })

@@ -1,24 +1,25 @@
 <div class="container">
   <section class="row example-container">
     <div class="form-container col-12 col-md-12">
+      <h4>{{ titleForm | uppercase }}</h4>
       <form class="example-form" [formGroup]="form" (ngSubmit)="addClass()">
           <div class="col-12 item">
             <mat-form-field class="example-full-width lib" appearance="fill">
               <mat-label>Libellé classe</mat-label>
-              <input type="text" minlength="8" maxlength="20" matInput [formControl]="libFormControl" placeholder="Ex. Seconde S A " formControlName="classWording">
+              <input type="text" minlength="8" maxlength="20" matInput  placeholder="Ex. Seconde S A " formControlName="wording" [formControl]='libFormControl'>
               <mat-error *ngIf="libFormControl.hasError('required')">
                 Saisir <strong>le libellé</strong>
-              </mat-error>
+              </mat-error> 
             </mat-form-field>
           </div>
   
           <div class="col-12 item">
             <mat-form-field class="example-full-width eff" appearance="fill">
               <mat-label>Effectif classe</mat-label>
-              <input type="number" matInput [formControl]="effFormControl" formControlName="classSize">
+              <input type="number" matInput  formControlName="size" [formControl]="effFormControl">
               <mat-error *ngIf="effFormControl.hasError('required')">
                 Renseignez <strong>l'effectif </strong> de la classe
-              </mat-error>
+              </mat-error> 
             </mat-form-field>
             <div class="row btn-container col-6 mt-1 mb-4">
               <button mat-flat-button color="primary" type="submit" >Ajouter</button>
@@ -50,7 +51,7 @@
     
       <ng-container matColumnDef="symbol">
         <th mat-header-cell *matHeaderCellDef> Date création </th>
-        <td mat-cell *matCellDef="let element"> {{ date() | date }} </td>
+        <td mat-cell *matCellDef="let element">{{ element.date }} </td>
       </ng-container>
 
       <ng-container matColumnDef="action">
