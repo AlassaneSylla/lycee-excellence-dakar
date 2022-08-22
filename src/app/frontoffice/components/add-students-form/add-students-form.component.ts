@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import {FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -21,8 +21,28 @@ interface Food {
 })
 export class AddStudentsFormComponent implements OnInit {
 
+  firstnameFormControl = new FormControl('', [Validators.required]);
+  lastNameFormControl = new FormControl('', [Validators.required]);
+  dateBirthFormControl = new FormControl('', [Validators.required]);
+  phoneFormControl = new FormControl('', [Validators.required]);
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+  placeBirthFormControl = new FormControl('', [Validators.required]);
+  locatorFormControl = new FormControl('', [Validators.required]);
+  classFormControl = new FormControl('', [Validators.required]);
+  registerDateFormControl = new FormControl('', [Validators.required]);
   matcher = new MyErrorStateMatcher();
+
+  form = new FormGroup({
+    email : new FormControl(''),
+    firstname : new FormControl(''),
+    lastname: new FormControl(''),
+    dateBirth: new FormControl(''),
+    phone: new FormControl(''),
+    placebirth: new FormControl(''),
+    locator: new FormControl(''),
+    classe: new FormControl(''),
+    registerDate: new FormControl(''),
+  });
 
   selectedValue: string | any;
   foods: Food[] = [
@@ -36,6 +56,10 @@ export class AddStudentsFormComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {}
+
+  registerStudent() {
+
+  }
 
   
 

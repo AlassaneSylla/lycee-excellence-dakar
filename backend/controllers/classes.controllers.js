@@ -2,6 +2,7 @@ const Classes = require('../models/classes');
 
 
 exports.getAllClasses = (req, res, next) => {
+    console.log("liste classes");
     Classes.find()
     .then(classes => res.status(200).json(classes))
     .catch(error => res.status(400).json({ error }));

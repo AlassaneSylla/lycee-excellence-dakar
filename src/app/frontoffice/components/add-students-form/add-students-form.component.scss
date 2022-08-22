@@ -12,16 +12,16 @@ td {
 form-container {
     width: 100%;
 }
-
-/*label {
-    text-align: right;
+.btn-container {
+    display: flex;
+    //border: greenyellow solid 2px;
 }
-.alert-danger{
-    color: red;
-    font-size: 15px;
+.btn {
+    width: 150px;
+    margin-left: 87%;
 }
-.secPreNom {
-    display: inline-flex;
-    width: 100%;
-    justify-content: space-between;
-}*/
+@media only screen and (max-width: 600px) {
+    .btn {
+      margin-left: 70%;
+    }
+}
