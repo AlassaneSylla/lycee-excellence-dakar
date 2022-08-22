@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container class-management-container">
   <section class="row example-container">
+    <h4>{{ titleForm | uppercase }}</h4>
     <div class="form-container col-12 col-md-12">
-      <h4>{{ titleForm | uppercase }}</h4>
       <form class="example-form" [formGroup]="form" (ngSubmit)="addClass()">
           <div class="col-12 item">
             <mat-form-field class="example-full-width lib" appearance="fill">
@@ -22,7 +22,7 @@
               </mat-error> 
             </mat-form-field>
             <div class="row btn-container col-6 mt-1 mb-4">
-              <button mat-flat-button color="primary" type="submit" >Ajouter</button>
+              <button mat-flat-button color="primary" type="submit" >Valider</button>
             </div>
           </div>  
       </form>
@@ -69,6 +69,14 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+
+    <mat-paginator 
+        #paginator 
+        [length]="100" 
+        [pageSizeOptions]="[5, 6, 8]" 
+        aria-label="select page" 
+        showFirstLastButtons>
+    </mat-paginator>
 
   </div>
 </div>

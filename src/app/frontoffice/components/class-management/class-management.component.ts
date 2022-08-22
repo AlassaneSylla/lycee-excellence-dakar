@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ClasseService } from 'src/app/shared/servicies/classe.service';
 import {FormControl, Validators} from '@angular/forms';
 import { DatePipe } from '@angular/common';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 export interface PeriodicElement {
   wording: string;
@@ -75,19 +77,16 @@ export class ClassManagementComponent implements OnInit {
   }
   this.classeService.createClass(classe);
   data.wording = "";
-  
-  /* if (this.classWording == "") {
-   console.log(this.messageError); 
-  }
-  else {
-  const lastIndex = this.classes.length - 1;  
-  const id = this.classes[lastIndex].id + 1;
-  this.classes.unshift({wording: this.classWording, size: this.classSize, id});
-  }
-  this.classWording = "";  */  
  }
 
+ @ViewChild('paginator') paginator: MatPaginator | any
+
  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'action'];
- dataSource = ELEMENT_DATA;
+ dataSource: MatTableDataSource<PeriodicElement> | any;
+
+ ngAfterViewInit() {
+  this.dataSource = new MatTableDataSource(ELEMENT_DATA);
+  this.dataSource.paginator = this.paginator;
+} 
 
 }

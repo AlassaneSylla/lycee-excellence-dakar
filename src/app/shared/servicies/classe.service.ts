@@ -7,14 +7,13 @@ import { Injectable } from '@angular/core';
 })
 export class ClasseService {
 
-  constructor(
-    private httpClient: HttpClient ) { }
+  constructor( private httpClient: HttpClient ) { }
 
-    createClass(classe: IClasse): any {
-      return this.httpClient.post('http://localhost:3000/api/classes', classe).subscribe((result) => {
-        console.log(result);
-        if(result.hasOwnProperty('message')){}
-      })
-    }
+  createClass(classe: IClasse): any {
+    return this.httpClient.post('http://localhost:3000/api/classes', classe).subscribe((result) => {
+      console.log(result);
+      if(result.hasOwnProperty('message')){}
+    })
+  }
   
 }
