@@ -74,9 +74,10 @@ export class AddStudentsFormComponent implements OnInit {
     }
     this.studentService.createStudent(student);
   }
-  
 
-  
-
-  
+  completeRegister() {
+    this.form.reset();
+    //window.location.reload();
+  }
+ 
 }

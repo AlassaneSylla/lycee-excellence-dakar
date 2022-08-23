@@ -1,12 +1,12 @@
 <div class="row form-container mb-5">
     <h4>{{ formTitle }}</h4>
-    <form class="example-form" (ngSubmit)="registerStudent()" [formGroup]="form">
+    <form class="example-form" (ngSubmit)="registerStudent()" [formGroup]="form" (ngSubmit)="completeRegister()">
         <table class="example-full-width" cellspacing="0">
             <tr>
                 <td>
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Prénom(s)</mat-label>
-                        <input matInput type="text" formControlName="firstname" [errorStateMatcher]="matcher" [formControl]='firstnameFormControl'required>
+                        <input matInput type="text" formControlName="firstname" [formControl]='firstnameFormControl'required>
                         <mat-error *ngIf="firstnameFormControl.hasError('required')">
                             Prénom(s) <strong>obligatoire</strong>
                         </mat-error>
@@ -15,7 +15,7 @@
                 <td>
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Nom</mat-label>
-                        <input matInput type="text" [errorStateMatcher]="matcher" formControlName="lastname" [formControl]="lastNameFormControl" required>
+                        <input matInput type="text" formControlName="lastname" [formControl]="lastNameFormControl" required>
                         <mat-error *ngIf="lastNameFormControl.hasError('required')">
                             Nom <strong>obligatoire</strong>
                         </mat-error>
@@ -26,7 +26,7 @@
                 <td>
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Date de naissance</mat-label>
-                        <input matInput type="date" [errorStateMatcher]="matcher" formControlName="dateBirth" [formControl]="dateBirthFormControl" required>
+                        <input matInput type="date" formControlName="dateBirth" [formControl]="dateBirthFormControl" required>
                         <mat-error *ngIf="dateBirthFormControl.hasError('required')">
                             date de naissance <strong>obligatoire</strong>
                         </mat-error>
@@ -35,7 +35,7 @@
                 <td>
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Lieu de naissance</mat-label>
-                        <input matInput type="text" [errorStateMatcher]="matcher" placeholder="Dakar, Senegal" formControlName="placeBirth" [formControl]="placeBirthFormControl" required>
+                        <input matInput type="text" placeholder="Dakar, Senegal" formControlName="placeBirth" [formControl]="placeBirthFormControl" required>
                         <mat-error *ngIf="placeBirthFormControl.hasError('required')">
                             lieu de naissance <strong>obligatoire</strong>
                         </mat-error>
@@ -47,7 +47,7 @@
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Téléphone</mat-label>
                         <span matPrefix>+221 &nbsp;</span>
-                        <input type="tel" matInput [errorStateMatcher]="matcher" formControlName="phone" [formControl]="phoneFormControl" placeholder="7X-XXX-XX-XX" required>
+                        <input type="tel" matInput formControlName="phone" [formControl]="phoneFormControl" placeholder="7X-XXX-XX-XX" required>
                         <mat-icon matSuffix>mode_edit</mat-icon>
                         <mat-error *ngIf="phoneFormControl.hasError('required')">
                             numéro téléphone <strong>obligatoire</strong>
@@ -59,17 +59,11 @@
                         <mat-label>Adresse mail</mat-label>
                         <input type="email" matInput formControlName="addressmail" [formControl]="emailFormControl" [errorStateMatcher]="matcher"
                                placeholder="Ex. pat@example.com">
-                        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-                          Entrez un mail valide
-                        </mat-error>
-                        <mat-error *ngIf="emailFormControl.hasError('required')">
-                          adresse mail <strong>obligatoire</strong>
-                        </mat-error>
                       </mat-form-field>
                 </td>
             </tr>
             <tr>
-                    <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-form-field class="example-full-width" ppearance="fill">
                         <mat-label>Adresse</mat-label>
                         <textarea matInput type="text" [errorStateMatcher]="matcher" formControlName="location" [formControl]="locatorFormControl"  required></textarea>
                         <mat-error *ngIf="locatorFormControl.hasError('required')">
