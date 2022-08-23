@@ -1,15 +1,15 @@
 const mongoose = require('mongoose');
 
 const studentSchema = mongoose.Schema({
-    firstname: { type: String, required: true },
-    lastname: { type: String, required: true },
-    dateBirth: { type: Date, required: true },
-    placeBirth: { type: String, required: true },
-    location: { type: String, required: true },
-    phone: { type: Number, required: true },
-    addressMail: { type: String },
-    registrationDate: { type: Date, required: true },
-    class: { type: mongoose.Schema.Types.ObjectId, ref: 'Classes'} 
+    firstname: { type: String },
+    lastname: { type: String },
+    dateBirth: { type: Date },
+    placeBirth: { type: String },
+    location: { type: String },
+    phone: { type: Number },
+    addressmail: { type: String },
+    registrationDate: { type: Date },
+    classe: { type: String } 
 });
 
 module.exports = mongoose.model('Students', studentSchema);

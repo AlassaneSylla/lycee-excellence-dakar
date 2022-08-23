@@ -5,7 +5,7 @@ const bodyparser = require('body-parser');
 const cors = require('cors');
 
 const classesRoutes = require('./routes/classes.routes');
-const userRoutes = require('./routes/user.routes');
+/* const userRoutes = require('./routes/user.routes'); */
 const studentsRoutes = require('./routes/student.routes');
 
 const { NODE_ENV, URL_DB } = process.env;

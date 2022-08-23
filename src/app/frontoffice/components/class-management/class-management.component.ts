@@ -79,6 +79,7 @@ export class ClassManagementComponent implements OnInit {
   data.wording = "";
  }
 
+ 
  @ViewChild('paginator') paginator: MatPaginator | any
 
  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'action'];

@@ -1,6 +1,6 @@
 export interface IStudent {
     _id?: string,
-    firsname: string,
+    firstname: string,
     lastname: string,
     dateBirth: Date,
     placeBirth: string,
@@ -8,5 +8,5 @@ export interface IStudent {
     phone: number,
     addressmail: string,
     registrationDate: Date,
-    class: string
+    classe: string
 }

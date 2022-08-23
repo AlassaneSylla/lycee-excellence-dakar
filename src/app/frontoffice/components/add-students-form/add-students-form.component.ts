@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
+import { StudentService } from 'src/app/shared/servicies/student.service';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -20,6 +21,8 @@ interface Food {
   styleUrls: ['./add-students-form.component.scss']
 })
 export class AddStudentsFormComponent implements OnInit {
+  formTitle = "Formulaire d'inscription";
+  date = Date.now();
 
   firstnameFormControl = new FormControl('', [Validators.required]);
   lastNameFormControl = new FormControl('', [Validators.required]);
@@ -33,15 +36,15 @@ export class AddStudentsFormComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
 
   form = new FormGroup({
-    email : new FormControl(''),
-    firstname : new FormControl(''),
+    firstname: new FormControl(''),
     lastname: new FormControl(''),
     dateBirth: new FormControl(''),
+    placeBirth: new FormControl(''),
     phone: new FormControl(''),
-    placebirth: new FormControl(''),
-    locator: new FormControl(''),
+    addressmail : new FormControl(''),
+    location: new FormControl(''),
     classe: new FormControl(''),
-    registerDate: new FormControl(''),
+    registrationDate: new FormControl(''),
   });
 
   selectedValue: string | any;
@@ -50,16 +53,28 @@ export class AddStudentsFormComponent implements OnInit {
     {value: 'pizza', viewValue: 'Pizza'},
     {value: 'tacos', viewValue: 'Tacos'},
   ];
-
-  formTitle = "Formulaire d'inscription";
   
-  constructor() { }
+  constructor(private studentService: StudentService) { }
 
   ngOnInit(): void {}
 
   registerStudent() {
-
+    let data = this.form.value;
+    console.log(data);
+    let student = { 
+      firstname: data.firstname,
+      lastname: data.lastname,
+      dateBirth: data.dateBirth,
+      placeBirth: data.placeBirth,
+      location: data.location,
+      phone: data.phone,
+      addressmail: data.addressmail,
+      registrationDate: data.registrationDate,
+      classe: data.classe   
+    }
+    this.studentService.createStudent(student);
   }
+  
 
   
 

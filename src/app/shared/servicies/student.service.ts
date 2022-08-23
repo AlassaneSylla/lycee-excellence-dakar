@@ -12,10 +12,10 @@ export class StudentService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json'})
   }
 
-  createSudent(student: IStudent): any {
+  createStudent(student: IStudent): any {
     return this.httpClient.post('http://localhost:3000/api/students', student).subscribe((result) => {
       console.log(result);
-      if(result.hasOwnProperty('student done')){}
+      if(result.hasOwnProperty('student register')){}
     })
   }
 }
