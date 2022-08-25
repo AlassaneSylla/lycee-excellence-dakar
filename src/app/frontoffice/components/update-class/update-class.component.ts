@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { IClasse } from 'src/app/shared/interface/IClasse';
+import { ClasseService } from 'src/app/shared/servicies/classe.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FormControl, Validators, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-update-class',
@@ -6,40 +10,74 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./update-class.component.scss']
 })
 export class UpdateClassComponent implements OnInit {
+  libFormControl = new FormControl('', [Validators.required]);
+  effFormControl = new FormControl('', [Validators.required]);
 
-  constructor() { }
+  form = new FormGroup({
+    wording : new FormControl(''),
+    size : new FormControl('')
+  });
+
+  titleForm = "Modifier classe";
+  id = "";
+  wording = "";
+  size = 0;
+  date;
+  classe : IClasse;
+
+  constructor(private classeService : ClasseService, private route : ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
+    const routeParams = this.route.snapshot.paramMap;
+    this.id = routeParams.get('id');
+
+    //classe with his data
+    this.classeService.getOneClass(this.id).subscribe((result : IClasse) => {
+      console.log(result);
+      if(result.hasOwnProperty('error')){
+        console.log('classe not found');
+      } else {
+        this.classe = result;
+        this.wording = this.classe.wording;
+        this.size = this.classe.size;
+      }
+      return result;
+  });
   }
 
-  title = "Liste des classes";
-  classWording = "";
-  classSize= 0;
-  messageError = "error";
-  date = new Date();
-
- classes = [
-   { wording: "Second S", size: 31, id: 1},
-   { wording: "Premiere S1", size: 22, id: 5},
-   { wording: "Premiere L", size: 40, id: 9},
-   { wording: "Seconde L", size: 34, id: 12},
-   { wording: "Terminal L2b", size: 38, id: 2},
-   { wording: "Terminal S1", size: 15, id: 42},
-   { wording: "Terminal S2", size: 34, id: 28},
-   { wording: "Terminal L1a", size: 44, id: 18}
- ];
-
- editClass() {
-  if (this.classWording == "") {
-   console.log(this.messageError); 
+  getOneClass() {
+    this.classeService.getOneClass(this.id).subscribe((result : IClasse) => {
+      console.log(result);
+      if(result.hasOwnProperty('error')){
+        console.log('pas de classe retrouvee');
+      } else {
+        console.log('lib ' + result.wording);
+        console.log('eff ' + result.size);
+        this.classe = result;
+      }
+    });
   }
-  else {
-    const lastIndex = this.classes.length - 1;  
-  const id = this.classes[lastIndex].id + 1;
-  this.classes.unshift({wording: this.classWording, size: this.classSize, id});
-  }
-  this.classWording = ""; 
-   
- }
 
+  editClass() {
+    this.classeService.modifyClass({_id : this.id, wording : this.wording, size : this.size, date : this.date})
+    .subscribe((result : IClasse) => {
+      console.log('object to modify' + result);
+      if(this.wording == ""){
+        console.log('modification impossible');
+      } else {
+        this.classe = result;
+        this.wording = this.classe.wording;
+        this.size = this.classe.size;
+        console.log('wording ' +this.wording);
+        console.log('size '+this.size);
+
+        setTimeout(() => {
+          this.router.navigate(['/frontoffice/class-management']);
+        }, 3000);
+      }
+    });
+  }
+  
 }
+
+

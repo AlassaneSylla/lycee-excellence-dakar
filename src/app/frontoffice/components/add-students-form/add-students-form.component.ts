@@ -9,7 +9,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
     return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
   }
 }
-interface Food {
+interface Classes {
   value: string;
   viewValue: string;
 }
@@ -48,15 +48,19 @@ export class AddStudentsFormComponent implements OnInit {
   });
 
   selectedValue: string | any;
-  foods: Food[] = [
-    {value: 'steak', viewValue: 'Steak'},
-    {value: 'pizza', viewValue: 'Pizza'},
-    {value: 'tacos', viewValue: 'Tacos'},
+  classes: Classes[] = [
+    {value: 'Terminale S2 A', viewValue: 'Terminale S2 A'},
+    {value: 'Seconde L1', viewValue: 'Seconde L1'},
+    {value: 'Premiere S1', viewValue: 'Premiere S1'},
   ];
   
   constructor(private studentService: StudentService) { }
 
   ngOnInit(): void {}
+
+  completeRegister() {
+    this.form.reset();
+  }
 
   registerStudent() {
     let data = this.form.value;
@@ -73,11 +77,9 @@ export class AddStudentsFormComponent implements OnInit {
       classe: data.classe   
     }
     this.studentService.createStudent(student);
+    this.completeRegister();
   }
 
-  completeRegister() {
-    this.form.reset();
-    //window.location.reload();
-  }
+  
  
 }

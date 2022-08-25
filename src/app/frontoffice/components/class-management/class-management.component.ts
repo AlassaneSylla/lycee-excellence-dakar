@@ -1,28 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { ClasseService } from 'src/app/shared/servicies/classe.service';
-import {FormControl, Validators} from '@angular/forms';
-import { DatePipe } from '@angular/common';
+import { FormControl, Validators } from '@angular/forms';
+import { IClasse } from 'src/app/shared/interface/IClasse';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
 
-export interface PeriodicElement {
-  wording: string;
-  position: number;
-  size: number;
-  date: string
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, wording: 'Sixieme A', size: 36, date: 'dateins'},
-  {position: 2, wording: 'Cinquieme C', size: 40, date: '...'},
-  {position: 3, wording: 'Quatrieme B', size: 29, date: '...'},
-  {position: 4, wording: 'Troisieme E', size: 31, date: '...'},
-  {position: 5, wording: 'Seconde L', size: 25, date: '..'},
-  {position: 6, wording: 'Premiere S', size: 23, date: '...'},
-  {position: 7, wording: 'Terminale S1 A', size: 22, date: '...'},
-  
-];
 
 @Component({
   selector: 'app-class-management',
@@ -37,57 +19,59 @@ export class ClassManagementComponent implements OnInit {
       wording : new FormControl(''),
       size : new FormControl('')
     });
+
+    title = "Liste des classes";
+    titleForm = 'Ajouter nouvelle classe';
+    id = "";
+    wording = "";
+    size = 0;
+    date = () =>  Date.now();
+    classes;
+    nb =0;
     
+    
+    constructor(private classeService: ClasseService) { }
 
-  constructor(private classeService: ClasseService) { }
+    ngOnInit(): void {
+      this.getAllClasses();
+    }
 
-  ngOnInit(): void {
-  }
+    completeAddClass() {
+      this.form.reset();
+    }
 
-  title = "Liste des classes";
-  titleForm = 'Ajouter nouvelle classe';
-  date = () =>  Date.now();
+    addClass() {
+      let data = this.form.value;
+      console.log(data);
+      let classe = { 
+        size: data.size, 
+        wording: data.wording, 
+        date : Date.now()
+      }
+      this.classeService.createClass(classe);
+      this.completeAddClass();
+    }
 
-  classWording = "";
-  classSize= 0;
- 
- classes = [
-   { wording: "Second S", size: 31, id: 1},
-   { wording: "Premiere S1", size: 22, id: 5},
-   { wording: "Premiere L", size: 40, id: 9},
-   { wording: "Seconde L", size: 34, id: 12},
-   { wording: "Terminal L2b", size: 38, id: 2},
-   { wording: "Terminal S1", size: 15, id: 42},
-   { wording: "Terminal S2", size: 34, id: 28},
-   { wording: "Terminal L1a", size: 44, id: 18}
- ];
+    getAllClasses() : void {
+      this.classeService.getAllClasses()
+      .subscribe(result => this.classes = result);
+    }
 
- deleteClass(clId: number) {
-   const clIndex = this.classes.findIndex((cl) => cl.id === clId);
-   this.classes.splice(clIndex, 1);
- } 
+    deleteClass(id: string) {
+      if(confirm("Are you sure to delete ")) {
+        this.classeService.deleteClass(id).subscribe(result => {
+          if(result.hasOwnProperty('error')){
+            console.log('not deleted');
+          } else {
+            console.log('class deleted : ' + result)
+          }
+        });
+      }  
+    }
 
- addClass() {
-  let data = this.form.value;
-  console.log(data);
-  let classe = { 
-    size: data.size, 
-    wording: data.wording, 
-    date : Date.now()
-  }
-  this.classeService.createClass(classe);
-  data.wording = "";
- }
-
- 
- @ViewChild('paginator') paginator: MatPaginator | any
-
- displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'action'];
- dataSource: MatTableDataSource<PeriodicElement> | any;
-
- ngAfterViewInit() {
-  this.dataSource = new MatTableDataSource(ELEMENT_DATA);
-  this.dataSource.paginator = this.paginator;
-} 
+    @ViewChild('paginator') paginator: MatPaginator | any;
+    ngAfterViewInit() {
+      this.classes.paginator = this.paginator;
+    } 
 
 }

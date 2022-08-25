@@ -14,7 +14,8 @@
 .form-container {
     width: 100%;
     border: rgb(250, 187, 51) solid 0.5px; 
-    border-radius: 5px;  
+    border-radius: 5px; 
+    display: inline-block; 
 }
 .lib {
     margin-left: 35px;
@@ -27,7 +28,10 @@
     width: 100px;
 }
 button:hover {
-    background-color: rgb(55, 138, 247);
+    background-color: rgb(125, 177, 245);
+}
+a {
+    text-decoration: none;
 }
 h1 {
     text-align: center;
@@ -47,8 +51,20 @@ mat-icon {
         width: 50%;
     }
     .btn-container {
-        justify-content: center;
+        margin-left: 120px;
         width: 80px;
+    }
+    .form-container {
+        width: 100%; 
+    }
+    .example-form {
+        width: 100%;
+        padding-top: 10px;
+        //border: red solid 2px;   
+    }
+    .example-full-width {
+        width: 70%;
+        //border: green solid 2px;
     }
   }
   

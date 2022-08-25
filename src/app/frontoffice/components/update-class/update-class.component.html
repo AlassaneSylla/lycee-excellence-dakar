@@ -1,28 +1,31 @@
 <div class="container">
-    <mat-card>
-        <mat-card-title>modifier classe</mat-card-title>
-          <form class="form mb-3" (ngSubmit)="editClass()">
-            <div class="sec2">
-              <div class="form-group col-sm-5">
-                <div class="label">libellé classe</div>
-                <input type="text" name="wording" class="form-control" minlength="9" maxlength="20" #wording="ngModel" required [(ngModel)]="classWording"><br>
-                <span *ngIf="wording.touched && wording.invalid" class="alert-danger">libellé invalide !</span>
-              </div>
-              <pre></pre>
-              <div class="form-group col-sm-3">
-                <div class="label">effectif classe</div>
-                <input #size="ngModel" type="number" name="size" class="form-control" minlength="1" maxlength="2" [(ngModel)]="classSize" required><br>
-                <span *ngIf="size.touched || size.invalid || size.value < 0 || size.value > 50" class="alert-danger" >effectif invalide</span><br>
-              </div>
-              <pre></pre>
+<h4>{{ titleForm | uppercase }}</h4>
+    <div class="form-container col-12 col-md-12">
+      <form class="example-form col-12 col-md-12" [formGroup]="form" (ngSubmit)="editClass()">
+          <div class="col-6 col-md-12 item1">
+            <mat-form-field class="example-full-width lib" appearance="fill">
+              <mat-label>Libellé classe</mat-label>
+              <input type="text" matInput formControlName="wording" [formControl]='libFormControl' [(ngModel)]="wording">
+              <mat-error *ngIf="libFormControl.hasError('required')">
+                Saisir <strong>le libellé</strong>
+              </mat-error> 
+            </mat-form-field>
+          </div>
+  
+          <div class="col-6 col-md-12 item2">
+            <mat-form-field class="example-full-width eff" appearance="fill">
+              <mat-label>Effectif classe</mat-label>
+              <input type="number" matInput  formControlName="size" [formControl]="effFormControl" [(ngModel)]="size">
+              <mat-error *ngIf="effFormControl.hasError('required')">
+                Renseignez <strong>l'effectif </strong> de la classe
+              </mat-error> 
+            </mat-form-field>
+            <div class="row btn-container col-6 mt-1 mb-4">
+              <button mat-flat-button color="primary" type="submit" >Valider</button>
             </div>
-            <div class="form-group mt-3">
-              <button mat-flat-button color="primary" type="submit">modifier</button>
-            </div>
-        </form>
-        </mat-card>
-        <div class="precedent">
-            <p><a routerLink="/frontoffice/class-management">Précedent</a></p>
-        </div>
-        
-</div>
+          </div>  
+      </form>
+    </div>
+</div>  
+<router-outlet></router-outlet>
+

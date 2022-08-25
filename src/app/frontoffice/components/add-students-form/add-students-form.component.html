@@ -1,6 +1,6 @@
 <div class="row form-container mb-5">
     <h4>{{ formTitle }}</h4>
-    <form class="example-form" (ngSubmit)="registerStudent()" [formGroup]="form" (ngSubmit)="completeRegister()">
+    <form class="example-form" (ngSubmit)="registerStudent()" [formGroup]="form">
         <table class="example-full-width" cellspacing="0">
             <tr>
                 <td>
@@ -63,7 +63,7 @@
                 </td>
             </tr>
             <tr>
-                    <mat-form-field class="example-full-width" ppearance="fill">
+                    <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Adresse</mat-label>
                         <textarea matInput type="text" [errorStateMatcher]="matcher" formControlName="location" [formControl]="locatorFormControl"  required></textarea>
                         <mat-error *ngIf="locatorFormControl.hasError('required')">
@@ -75,9 +75,9 @@
                 <td>
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Choisir classe</mat-label>
-                        <mat-select [(ngModel)]="selectedValue" name="food" [errorStateMatcher]="matcher" [formControl]="classFormControl" required>
-                          <mat-option *ngFor="let food of foods" [value]="food.value">
-                            {{food.viewValue}}
+                        <mat-select [(ngModel)]="selectedValue" name="classe" formControlName="classe" [errorStateMatcher]="matcher" [formControl]="classFormControl" required>
+                          <mat-option *ngFor="let classe of classes" [value]="classe.value">
+                            {{classe.viewValue}}
                           </mat-option>
                         </mat-select>
                         <mat-error *ngIf="classFormControl.hasError('required')">

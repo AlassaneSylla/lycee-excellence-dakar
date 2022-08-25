@@ -2,8 +2,8 @@
   <section class="row example-container">
     <h4>{{ titleForm | uppercase }}</h4>
     <div class="form-container col-12 col-md-12">
-      <form class="example-form" [formGroup]="form" (ngSubmit)="addClass()">
-          <div class="col-12 item">
+      <form class="example-form col-12 col-md-12" [formGroup]="form" (ngSubmit)="addClass()">
+          <div class="col-6 col-md-12 item1">
             <mat-form-field class="example-full-width lib" appearance="fill">
               <mat-label>Libellé classe</mat-label>
               <input type="text" minlength="8" maxlength="20" matInput  placeholder="Ex. Seconde S A " formControlName="wording" [formControl]='libFormControl'>
@@ -13,7 +13,7 @@
             </mat-form-field>
           </div>
   
-          <div class="col-12 item">
+          <div class="col-6 col-md-12 item2">
             <mat-form-field class="example-full-width eff" appearance="fill">
               <mat-label>Effectif classe</mat-label>
               <input type="number" matInput  formControlName="size" [formControl]="effFormControl">
@@ -31,44 +31,55 @@
   
   <div class="table-container my-3">
     <h4>{{ title | uppercase }}</h4>
-
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-    
-      <ng-container matColumnDef="position">
-        <th mat-header-cell *matHeaderCellDef> Nb. Classes </th>
-        <td mat-cell *matCellDef="let element"> {{ element.position }} </td>
-      </ng-container>
-    
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef> Libellé </th>
-        <td mat-cell *matCellDef="let element"> {{ element.wording | uppercase }} </td>
-      </ng-container>
-    
-      <ng-container matColumnDef="weight">
-        <th mat-header-cell *matHeaderCellDef> Effectif </th>
-        <td mat-cell *matCellDef="let element"> {{ element.size }} </td>
-      </ng-container>
-    
-      <ng-container matColumnDef="symbol">
-        <th mat-header-cell *matHeaderCellDef> Date création </th>
-        <td mat-cell *matCellDef="let element">{{ element.date }} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef> Action </th>
-        <td mat-cell *matCellDef="let element"> 
-          <a routerLink="/frontoffice/update-class/{{ element.position }}" >
-            <mat-icon id="icon1">edit</mat-icon>
-          </a>
-          <button mat-mini-fab color="warn" aria-label="delete icon" (click)="deleteClass(element.position)">
-            <mat-icon id="icon2">delete</mat-icon>
-          </button>
-        </td>
-      </ng-container>
-    
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+    <div class="table-responsive">
+      <table class="table">
+          <thead>
+          <tr>
+              <th scope="col">nb.classes</th>
+              <th scope="col">libellé</th>
+              <th scope="col">effectif</th>
+              <th scope="col">date création</th>
+              <th scope="col">actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let class of classes">
+              <td>{{ classes.length }}</td>
+              <td>{{ class.wording | uppercase }}</td>
+              <td>{{ class.size }}</td>
+              <td>{{ class.date | date }}</td>
+              <td>
+                <button mat-icon-button>
+                  <a routerLink="/frontoffice/update-class/{{ class._id }}" >
+                    <mat-icon>edit</mat-icon> 
+                  </a>
+                </button>   
+                <button mat-icon-button color="warn" (click)="deleteClass(class._id)">
+                  <mat-icon id="icon2">delete_outline</mat-icon>
+                </button>
+              </td> 
+          </tr>
+          </tbody>
+      </table>
+    </div>  
+   <!--  <table class="table table-striped">
+      <thead>
+        <tr>
+          <td>Libelle</td>
+          <td>Effectif</td>
+          <td>Modif</td>
+          <td>Supp</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let class of classes">
+          <td>{{ class.wording }}</td>
+          <td>{{ class.size }}</td>
+          <td><a routerLink="/classDetails/{{ class._id }}" class="btn btn-warning">Edit</a></td>
+          <td><button (click)="deleteClass(class._id)" class="btn btn-danger">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>  -->
 
     <mat-paginator 
         #paginator 

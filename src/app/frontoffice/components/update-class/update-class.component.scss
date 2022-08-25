@@ -1,9 +1,70 @@
-.precedent {
-    margin-top: 3px;
-    p{
-        a{
-            text-decoration: none;
-        }
-    }
-    
+.class-management-container {
+    margin-bottom: 70px;
 }
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: max-content;
+    display: inline-flex; 
+    padding-top: 20px;   
+}
+.example-full-width {
+    width: 100%;
+}
+.form-container {
+    width: 100%;
+    border: rgb(250, 187, 51) solid 0.5px; 
+    border-radius: 5px; 
+    display: inline-block; 
+}
+.lib {
+    margin-left: 35px;
+}
+.eff {
+    margin-left: 55px;
+}
+.btn-container {
+    margin-left: 454px;
+    width: 100px;
+}
+button:hover {
+    background-color: rgb(125, 177, 245);
+}
+a {
+    text-decoration: none;
+}
+h1 {
+    text-align: center;
+}
+table {
+    width: 100%;
+}
+mat-icon {
+    font-size: 20px;
+}
+.icon1 .icon2 {
+    align-items: stretch;
+    background-color: transparent;
+}
+@media only screen and (max-width: 600px) {
+    .lib .eff {
+        width: 50%;
+    }
+    .btn-container {
+        margin-left: 120px;
+        width: 80px;
+    }
+    .form-container {
+        width: 100%; 
+    }
+    .example-form {
+        width: 100%;
+        padding-top: 10px;
+        //border: red solid 2px;   
+    }
+    .example-full-width {
+        width: 70%;
+        //border: green solid 2px;
+    }
+  }
+  
