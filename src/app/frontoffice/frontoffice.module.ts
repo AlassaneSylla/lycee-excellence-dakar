@@ -10,6 +10,8 @@ import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { AddStudentsFormComponent } from './components/add-students-form/add-students-form.component';
 import { UpdateClassComponent } from './components/update-class/update-class.component';
+import { EditStudentComponent } from './components/edit-student/edit-student.component';
+import { StudentDetailsComponent } from './components/student-details/student-details.component';
 
 
 
@@ -22,6 +24,8 @@ import { UpdateClassComponent } from './components/update-class/update-class.com
     FrontofficeComponent,
     AddStudentsFormComponent,
     UpdateClassComponent,
+    EditStudentComponent,
+    StudentDetailsComponent,
   ],
   imports: [
     CommonModule,

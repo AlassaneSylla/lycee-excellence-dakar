@@ -1,90 +1,48 @@
-<div class="container tab-register-container mt-3 mb-5">
-    <h4>{{ title | uppercase }}</h4>
-    <div class="table-container">
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-    
-        <ng-container matColumnDef="position">
-          <th mat-header-cell *matHeaderCellDef> Nb. eleves </th>
-          <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-        </ng-container>
-      
-        <ng-container matColumnDef="firstname">
-          <th mat-header-cell *matHeaderCellDef> Prenom </th>
-          <td mat-cell *matCellDef="let element"> {{element.firstname}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="lastname">
-          <th mat-header-cell *matHeaderCellDef> Nom </th>
-          <td mat-cell *matCellDef="let element"> {{element.lastname}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="date_naiss">
-          <th mat-header-cell *matHeaderCellDef> D. naissance </th>
-          <td mat-cell *matCellDef="let element"> {{element.date_naiss}}</td>
-        </ng-container>
-      
-        <ng-container matColumnDef="mail">
-          <th mat-header-cell *matHeaderCellDef> Mail </th>
-          <td mat-cell *matCellDef="let element"> {{element.mail}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="phone">
-          <th mat-header-cell *matHeaderCellDef> Telephone </th>
-          <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="address">
-          <th mat-header-cell *matHeaderCellDef> Adresse </th>
-          <td mat-cell *matCellDef="let element"> {{element.address}} </td>
-        </ng-container>
-      
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
-      <mat-paginator 
-        #paginator 
-        [length]="100" 
-        [pageSizeOptions]="[6, 8, 10]" 
-        aria-label="select page" 
-        showFirstLastButtons>
-      </mat-paginator>
-      
-    </div>
-    
-    
-    
-
-    <!-- <table class="table table-responsive">
-      <thead>
+<div class="container table-container my-3">
+  <h4>{{ title | uppercase }}</h4>
+  <div class="table-responsive">
+    <table class="table">
+        <thead>
         <tr>
-          <th scope="col">#</th>
-          <th scope="col">Prénom</th>
-          <th scope="col">Nom</th>
-          <th scope="col">Email</th>
-          <th scope="col">Téléphone</th>
-          <th scope="col">Adresse</th>
-          <th scope="col">Date</th>
-          <th class="scope">Action</th>
+            <th scope="col">Prénom(s)</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Date naissance</th>
+            <th scope="col">Classe</th>
+            <th scope="col">Téléphone</th>
+            <th scope="col">Actions</th>
+            <th scope="col">Détails</th>
         </tr>
-      </thead>
-      <tbody>
+        </thead>
+        <tbody>
         <tr *ngFor="let student of students">
-          <th>{{student.id}}</th>
-          <th>{{student.firstname | titlecase }}</th>
-          <th>{{student.lastname | uppercase }}</th>
-          <th>{{student.addressMail}}</th>
-          <th>{{student.phone}}</th>
-          <th>{{student.location}}</th>
-          <th>{{registrationDate | date}}</th>
-          <th>
-            <a class="linkEdit" routerLink="/frontoffice/update-class/{{student.id}}" >
-              <mat-icon>edit</mat-icon>
-            </a>
-            <button mat-mini-fab color="warn" aria-label="delete icon"(click)="deleteStudent(student.id)">
-              <mat-icon>delete</mat-icon>
-            </button>
-          </th>
+            <td>{{ student.firstname | titlecase }}</td>
+            <td>{{ student.lastname | uppercase }}</td>
+            <td>{{ student.dateBirth | date }}</td>
+            <td>{{ student.classe }}</td>
+            <td>{{ student.phone }}</td>
+            <td>
+              <button mat-icon-button>
+                <a routerLink="/frontoffice/edit-student/{{ student._id }}" >
+                  <mat-icon>edit</mat-icon> 
+                </a>
+              </button>   
+              <button mat-icon-button color="warn" (click)="deleteStudent(student._id)">
+                <mat-icon id="icon2">delete_outline</mat-icon>
+              </button>
+            </td> 
+            <td><a routerLink="/frontoffice/student-details/{{ student._id }}"><mat-icon>more_vert</mat-icon></a></td>
         </tr>
-      </tbody>
-    </table> -->
+        </tbody>
+    </table>
+    <p class="nbeleves">nombre d'éléves inscritent: {{students.length}}</p>
+  </div>  
+
+  <mat-paginator 
+      #paginator 
+      [length]="100" 
+      [pageSizeOptions]="[5, 6, 8]" 
+      aria-label="select page" 
+      showFirstLastButtons>
+  </mat-paginator>
 </div>
+<router-outlet></router-outlet>

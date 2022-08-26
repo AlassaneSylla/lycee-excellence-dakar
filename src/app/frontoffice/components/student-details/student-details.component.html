@@ -1,0 +1,57 @@
+<div class="container">
+    <h4>{{ title | uppercase }}</h4>
+    <section class="row">
+        <div class="container details-container">
+            <section class="row">
+                <div class="container photo-fn-ln">
+                    <div class="col-12 col-md-4 photo">
+                        ici photo
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <p>Prenom(s) : {{ student.firstname }}</p>
+                        <p>Nom : {{ student.lastname }}</p>
+                        <p>Classe : {{ student.classe }}</p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 mt-4">
+                    <p>Date de naissance : {{ student.dateBirth | date }} </p>
+                </div>
+                <hr>
+                <div>
+                    <p>Lien de naissance : {{ student.placeBirth }} </p>
+                </div>
+                <hr>
+                <div>
+                    <p>Telephone : {{ student.phone }} </p>
+                </div>
+                <hr>
+                <div>
+                    <p>Adresse email : {{ student.addressmail }} </p>
+                </div>
+                <hr>
+                <div>
+                    <p>Adresse domicile : {{ student.location }} </p>
+                </div>
+                <hr>
+                <div>
+                    <p>Date d'inscription : {{ student.registrationDate | date }} </p>
+                </div>
+            </section>
+          
+        </div>
+    </section>
+</div>
+<router-outlet></router-outlet> 
+  
+<!-- id = '';
+firstname = "";
+lastname = '';
+dateBirth;
+phone;
+addressmail = '';
+placeBirth = '';
+location = '';
+classe = '';
+registrationDate;
+student: IStudent; -->
+  

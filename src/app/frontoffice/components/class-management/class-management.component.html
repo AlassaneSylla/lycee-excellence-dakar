@@ -62,28 +62,10 @@
           </tbody>
       </table>
     </div>  
-   <!--  <table class="table table-striped">
-      <thead>
-        <tr>
-          <td>Libelle</td>
-          <td>Effectif</td>
-          <td>Modif</td>
-          <td>Supp</td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let class of classes">
-          <td>{{ class.wording }}</td>
-          <td>{{ class.size }}</td>
-          <td><a routerLink="/classDetails/{{ class._id }}" class="btn btn-warning">Edit</a></td>
-          <td><button (click)="deleteClass(class._id)" class="btn btn-danger">Delete</button></td>
-        </tr>
-      </tbody>
-    </table>  -->
 
     <mat-paginator 
         #paginator 
-        [length]="100" 
+        [length]="classes.length" 
         [pageSizeOptions]="[5, 6, 8]" 
         aria-label="select page" 
         showFirstLastButtons>
@@ -91,7 +73,6 @@
 
   </div>
 </div>
-
 
 <router-outlet></router-outlet> 
 

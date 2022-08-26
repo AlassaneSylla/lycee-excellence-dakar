@@ -16,7 +16,7 @@ export class StudentService {
   createStudent(student: IStudent): any {
     return this.httpClient.post('http://localhost:3000/api/students', student).subscribe((result) => {
       console.log(result);
-      if(result.hasOwnProperty('student register')){}
+      if(result.hasOwnProperty('createStudent')){}
     })
   }
 
@@ -24,16 +24,15 @@ export class StudentService {
     return this.httpClient.get<IStudent>(`http://localhost:3000/api/students/${_id}`)
     .pipe(
       tap(_ => console.log('affiche un etudiant')),
-      catchError(this.handleError<IStudent>('get One Student'))
+      catchError(this.handleError<IStudent>('getOneStudent'))
     );  
   }
 
   getAllStudents() : Observable<IStudent[]> {
-    return this.httpClient.get<IStudent[]>('http://localhoste:3000/api/students')
+    return this.httpClient.get<IStudent[]>('http://localhost:3000/api/students')
     .pipe(
       tap(_ => console.log('list of students')),
-      catchError(this.handleError<IStudent[]>
-      ('get all classes'))
+      catchError(this.handleError<IStudent[]>('getAllStudents'))
     );
   }
 
@@ -41,7 +40,7 @@ export class StudentService {
     return this.httpClient.put(`http://localhost:3000/api/students/${student._id}`, student, this.httpOptions)
     .pipe(
       tap(_ => console.log(`modify student data id=${student._id}`)),
-      catchError(this.handleError<any>('modify student data'))
+      catchError(this.handleError<any>('editStudentData'))
     );
   }
 
@@ -49,7 +48,7 @@ export class StudentService {
     return this.httpClient.delete<IStudent>(`http://localhost:3000/api/students/${_id}`, this.httpOptions)
     .pipe(
       tap(_ => console.log(`delete student: id=${_id}`)),
-      catchError(this.handleError<IStudent>('delete student from list'))
+      catchError(this.handleError<IStudent>('deleteStudent'))
     );
   }
 

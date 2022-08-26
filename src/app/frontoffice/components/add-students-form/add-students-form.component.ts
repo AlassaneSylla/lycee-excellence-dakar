@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import { Router } from '@angular/router';
 import {ErrorStateMatcher} from '@angular/material/core';
 import { StudentService } from 'src/app/shared/servicies/student.service';
 
@@ -14,13 +15,13 @@ interface Classes {
   viewValue: string;
 }
 
-
 @Component({
   selector: 'app-add-students-form',
   templateUrl: './add-students-form.component.html',
   styleUrls: ['./add-students-form.component.scss']
 })
 export class AddStudentsFormComponent implements OnInit {
+  [x: string]: any;
   formTitle = "Formulaire d'inscription";
   date = Date.now();
 
@@ -54,7 +55,7 @@ export class AddStudentsFormComponent implements OnInit {
     {value: 'Premiere S1', viewValue: 'Premiere S1'},
   ];
   
-  constructor(private studentService: StudentService) { }
+  constructor(private studentService: StudentService, private router: Router ) { }
 
   ngOnInit(): void {}
 
@@ -77,7 +78,10 @@ export class AddStudentsFormComponent implements OnInit {
       classe: data.classe   
     }
     this.studentService.createStudent(student);
-    this.completeRegister();
+
+    setTimeout(() => {
+      this.router.navigate(['/frontoffice/students-management']);
+    }, 3000);
   }
 
   

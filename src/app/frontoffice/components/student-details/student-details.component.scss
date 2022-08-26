@@ -1,0 +1,15 @@
+.details-container {
+    width: 100%;
+    border: rgb(250, 187, 51) solid 0.5px; 
+    background-color: #EEE7CE;
+    border-radius: 5px;  
+}
+.photo-fn-ln {
+    display: inline-flex;
+}
+.photo {
+    //border: red solid 2px;
+    width: 20%;
+    height: auto;
+    margin-right: 60px;
+}

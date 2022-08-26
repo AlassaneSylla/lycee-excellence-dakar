@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormControl, Validators  } from '@angular/forms';
 import { ClasseService } from 'src/app/shared/servicies/classe.service';
-import { FormControl, Validators } from '@angular/forms';
 import { IClasse } from 'src/app/shared/interface/IClasse';
 import { MatPaginator } from '@angular/material/paginator';
+import { ActivatedRoute, Router } from '@angular/router';
+import { MatTableDataSource } from '@angular/material/table';
 
 
 @Component({
@@ -28,9 +29,10 @@ export class ClassManagementComponent implements OnInit {
     date = () =>  Date.now();
     classes;
     nb =0;
+   
     
     
-    constructor(private classeService: ClasseService) { }
+    constructor(private classeService: ClasseService, private route : ActivatedRoute, private router: Router) { }
 
     ngOnInit(): void {
       this.getAllClasses();
@@ -50,6 +52,11 @@ export class ClassManagementComponent implements OnInit {
       }
       this.classeService.createClass(classe);
       this.completeAddClass();
+
+      setTimeout(() => {
+        this.router.navigate(['/frontoffice/class-management']);
+        location.reload();
+      }, 3000);
     }
 
     getAllClasses() : void {
@@ -66,12 +73,12 @@ export class ClassManagementComponent implements OnInit {
             console.log('class deleted : ' + result)
           }
         });
-      }  
+      }
+      setTimeout(() => {
+        this.router.navigate(['/frontoffice/class-management']);
+        location.reload();
+      }, 2000);  
     }
 
-    @ViewChild('paginator') paginator: MatPaginator | any;
-    ngAfterViewInit() {
-      this.classes.paginator = this.paginator;
-    } 
-
+   page=1;
 }

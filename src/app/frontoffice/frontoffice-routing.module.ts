@@ -1,3 +1,5 @@
+import { StudentDetailsComponent } from './components/student-details/student-details.component';
+import { EditStudentComponent } from './components/edit-student/edit-student.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from '../app.component';
@@ -33,6 +35,14 @@ const routes: Routes = [
       {
         path: 'add-students-form',
         component: AddStudentsFormComponent,
+      },
+      {
+        path: 'edit-student/:id',
+        component: EditStudentComponent,
+      },
+      {
+        path: 'student-details/:id',
+        component: StudentDetailsComponent,
       },
       {
         path: 'root',
